@@ -40,8 +40,3 @@
 # Ignore Mac and Linux file system files
 *.swp
 .DS_Store
-app/controllers/subtasks_controller.rb
-app/views/goals/_form_date.html.erb
-app/views/goals/_form_title.html.erb
-db/migrate/20240304151729_create_subtasks.rb
-test/controllers/subtasks_controller_test.rb
