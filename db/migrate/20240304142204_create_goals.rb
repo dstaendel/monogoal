@@ -3,7 +3,7 @@ class CreateGoals < ActiveRecord::Migration[7.1]
     create_table :goals do |t|
       t.string :title
       t.text :description
-      t.boolean :active, default: true
+      t.boolean :active, default: false
       t.datetime :start_time
       t.datetime :end_time
       t.string :emoji

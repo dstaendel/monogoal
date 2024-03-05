@@ -5,3 +5,19 @@
 <p>For: Logged in users</p>
 <p>Use: Daily Use. Track your goal, edit subtasks, etc.</p>
 <p>On the dashboard you see your goal and the functionalities you chose (date, subtasks, etc.).</p>
+
+<% unless @goal.nil? %>
+    <div>
+      <h2><%= @goal.title %> <%= @goal.emoji %></h2>
+    </div>
+
+    <div>
+      <%= link_to "Add a date to your goal", edit_date_path(@goal), class: "btn btn-primary" %>
+    </div>
+<% else %>
+  <%= link_to new_goal_path do %>
+    <div>
+      <h1>Create your first goal!</h1>
+    </div>
+  <% end %>
+<% end %>
