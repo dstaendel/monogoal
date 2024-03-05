@@ -28,14 +28,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_04_151729) do
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
-  create_table "subtasks", force: :cascade do |t|
+  create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.integer "percentage"
     t.boolean "done", default: false
     t.bigint "goal_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["goal_id"], name: "index_subtasks_on_goal_id"
+    t.index ["goal_id"], name: "index_tasks_on_goal_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,5 +53,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_04_151729) do
   end
 
   add_foreign_key "goals", "users"
-  add_foreign_key "subtasks", "goals"
+  add_foreign_key "tasks", "goals"
 end
