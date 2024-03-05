@@ -3,6 +3,6 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @goal = Goal.find(params[:id])
+    @goal = Goal.where(active: true, user_id: current_user).first
   end
 end
