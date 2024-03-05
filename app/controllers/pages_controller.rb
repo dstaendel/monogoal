@@ -3,5 +3,6 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @goal = Goal.find(params[:id])
   end
 end
