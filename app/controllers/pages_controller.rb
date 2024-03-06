@@ -6,5 +6,6 @@ class PagesController < ApplicationController
 
   def dashboard
     @goal = Goal.where(active: true, user_id: current_user).first
+    @tasks = Task.where(goal_id: @goal.id)
   end
 end
