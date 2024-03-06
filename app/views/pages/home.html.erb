@@ -1,7 +1,42 @@
-<h1>Pages#home</h1>
+<%# <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
 <h2>This is the landing page</h2>
 <p>For: Users without login</p>
 <p>Use: Explanation of the app</p>
-<p>Content: Maybe some tools (pomodoro timer) </p>
+<p>Content: Maybe some tools (pomodoro timer) </p> %>
+
+<body>
+<div class="container-top">
+
+  <div class="goal-card">
+    <div class="goal-header">
+      Your goal
+    </div>
+    <div class="goal-title">
+      Learn to Code
+    </div>
+  </div>
+
+  <div class="container">
+  <%= image_tag("plant.webp", alt: "Beschreibung des Bildes") %>
+</div>
+
+  <div class="progress-message">
+    You're doing great!
+  </div>
+
+  <div class="days-remaining">
+    20 days remaining
+  </div>
+
+
+</div>
+
+<div class="container-bottom">
+ <div class="pomodoro">
+    <button class="pomodoro-button">Pomodoro</button>
+    <button class="add-goal-button">+</button>
+  </div>
+</div>
+</body>
