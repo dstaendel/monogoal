@@ -11,6 +11,13 @@
   width: 100px;
   height: 100px;
   position: relative;
+  transition: transform 0.5s ease-in-out;
+}
+
+.button-add-functionality:hover {
+  transform: scale(1.1); /* Button beim Hover vergrößern */
+  background-color: #3498db; /* Blauer Hintergrund */
+  color: white;
 }
 
 .button-add-functionality::before {
