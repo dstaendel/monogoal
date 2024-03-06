@@ -1,0 +1,91 @@
+
+.container-main{
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.container-top {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  border-radius: 50px;
+  background-color: #F8F7F4;
+  margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.container-center {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  // border: 1px solid #ccc;
+  border-radius: 25px;
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.container-bottom {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  // border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.goal-card {
+  background-color: #F8F7F4;
+  border-radius: 8px;
+  padding: 20px;
+  padding-top: 0px;
+  text-align: left;
+}
+
+.goal-title {
+  background-color: #F8F7F4;
+  border-radius: 8px;
+  padding: 20px;
+  padding-bottom: 0px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.progress-message {
+  background-color: white;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.days-remaining {
+  background-color: #F8F7F4;
+  border-radius: 2px;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.pomodoro-button, .add-goal-button {
+  background-color: #e7e7e7;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.container img {
+  width: 100%;        /* Stellt sicher, dass das Bild die Breite des Containers ausfüllt */
+  height: auto;       /* Behält das Seitenverhältnis des Bildes bei */
+  object-fit: cover;  /* Sorgt dafür, dass das Bild den Container ohne Verzerrung ausfüllt */
+}
