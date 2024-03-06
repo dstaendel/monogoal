@@ -1,0 +1,17 @@
+<div class="container">
+  <div>
+    <%= link_to "Back to dashboard", root_path, class: "btn btn-primary" %>
+  </div>
+
+  <div>
+    <%= render "form", task: @task %>
+  </div>
+
+  <div>
+    <ul>
+      <% @tasks.each do |task| %>
+        <li><%= link_to task.title, edit_goal_task_path(@goal, task) %> <%= task.done %> <%= task.percentage %> <%= link_to 'x', goal_task_path(@goal, task), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %> </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
