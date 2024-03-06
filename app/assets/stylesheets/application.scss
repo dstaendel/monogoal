@@ -15,7 +15,69 @@
 @import "components/navbar";
 
 //Footer
-@import "components/footer"
+@import "components/footer";
 
+body {
+  background-color: #AFDAEE; /* This sets the background color to white */
+}
 
+.div-colour {
+  background-color: white; /* This sets the background color to white */
+}
 
+.container-top {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+.goal-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.progress-message {
+  background-color: #add8e6;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.days-remaining {
+  background-color: #f0f8ff;
+  border-radius: 2px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.pomodoro-button, .add-goal-button {
+  background-color: #e7e7e7;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.container-bottom {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.container img {
+  width: 100%;        /* Stellt sicher, dass das Bild die Breite des Containers ausfüllt */
+  height: auto;       /* Behält das Seitenverhältnis des Bildes bei */
+  object-fit: cover;  /* Sorgt dafür, dass das Bild den Container ohne Verzerrung ausfüllt */
+}
