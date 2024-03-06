@@ -30,35 +30,9 @@
       20 days remaining
     </div>
   <div class="pomodoro">
-    <%= button_to new_goal_path, method: :get, class: "btn btn-primary add-goal-button" do %>
-    <span>+</span>
-    <% end %>
+   <button class="pomodoro-button">Placeholder</button>
+    <button class="button-add-functionality mx-3" ></button>
+     <button class="pomodoro-button">Placeholder</button>
   </div>
   </div>
-
-  <div class="new-task-container">
-    <input type="text" class="task-input" placeholder="What's your new task?">
-    <button class="add-task-button">+</button>
-  </div>
-
 </div>
-
-
-<div class="container-bottom">
- <div class="pomodoro">
-    <button class="pomodoro-button">Pomodoro</button>
-
-    <button class="button-add-functionality">+</button>
-
-  </div>
-</div>
-
-
-<div>
-  <%= link_to "Tackle a new goal", new_goal_path, class: "btn btn-primary" %>
-</div>
-
-<div>
-  <%= link_to "Log in", new_user_session_path %>
-</div>
-</body>

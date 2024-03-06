@@ -89,3 +89,10 @@
   height: auto;       /* Behält das Seitenverhältnis des Bildes bei */
   object-fit: cover;  /* Sorgt dafür, dass das Bild den Container ohne Verzerrung ausfüllt */
 }
+
+.pomodoro {
+display: flex;
+  justify-content: center; /* Zentriert den Inhalt horizontal */
+  align-items: center; /* Zentriert den Inhalt vertikal */
+
+}
