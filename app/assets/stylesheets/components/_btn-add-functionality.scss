@@ -1,0 +1,27 @@
+.button-add-functionality {
+  background-color: #AFDAEE;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.button-add-functionality::before {
+  content: '+';
+  color: white;
+  text-shadow: 0 0 20px rgba(181, 181, 181, 0.3);
+  font-family: "Bouquet";
+  font-weight: 700;
+  font-size: 6rem; /* Adjust if needed */
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+}
