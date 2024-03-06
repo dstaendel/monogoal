@@ -23,11 +23,11 @@
 }
 
 .add-task-button {
-  padding: 5px;
+  padding: 0;
   background-color: #89C2EC;
   color: white;
   font-weight: bold;
-  font-size: xx-large;
+  font-size: 35px; 
   border: none;
   cursor: pointer;
   border-radius: 3px;
@@ -37,6 +37,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  line-height: 36px; /* Added for vertical alignment, match it with button height */
 }
 
 .add-task-button:hover {
