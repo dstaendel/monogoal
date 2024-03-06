@@ -1,0 +1,8 @@
+<%= simple_form_for @goal do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :emoji %>
+  <%= f.input :start_time, as: :date, html5: true %>
+  <%= f.input :end_time, as: :date, html5: true %>
+  <%= f.button :submit %>
+<%= end %>

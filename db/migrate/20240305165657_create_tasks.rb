@@ -1,6 +1,6 @@
-class CreateSubtasks < ActiveRecord::Migration[7.1]
+class CreateTasks < ActiveRecord::Migration[7.1]
   def change
-    create_table :subtasks do |t|
+    create_table :tasks do |t|
       t.string :title
       t.integer :percentage
       t.boolean :done, default: false
