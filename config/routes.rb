@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :goals do
-    resources :subtasks, except: %i[index show]
+    resources :tasks, except: %i[show, new]
   end
 end
