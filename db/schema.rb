@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_165657) do
   create_table "goals", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.boolean "active", default: false
+    t.boolean "active", default: true
     t.datetime "start_time"
     t.datetime "end_time"
     t.string "emoji"
@@ -26,6 +26,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_165657) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_goals_on_user_id"
+  end
+
+  create_table "subtasks", force: :cascade do |t|
+    t.string "title"
+    t.integer "percentage"
+    t.boolean "done", default: false
+    t.bigint "goal_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_subtasks_on_goal_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -53,5 +63,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_165657) do
   end
 
   add_foreign_key "goals", "users"
+  add_foreign_key "subtasks", "goals"
   add_foreign_key "tasks", "goals"
 end

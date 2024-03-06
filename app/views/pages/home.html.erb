@@ -6,31 +6,34 @@
 <p>Use: Explanation of the app</p>
 
 <p>Content: Maybe some tools (pomodoro timer) </p> %>
+<div class="container-main">
 
-
-
-<body>
-<div class="container-top">
-
-  <div class="goal-card">
-    <div class="goal-header">
+  <div class="container-top">
+    <div class="goal-card">
       Your goal
     </div>
     <div class="goal-title">
       Learn to Code
     </div>
+    </div>
+  <div class="container-center">
+  <div class="progress-message">
+    You're doing great! -Emma
   </div>
-
   <div class="container">
-  <%= image_tag("plant.webp", alt: "Beschreibung des Bildes") %>
+    <%= image_tag("plant.webp", alt: "Beschreibung des Bildes") %>
+  </div>
 </div>
 
-  <div class="progress-message">
-    You're doing great!
+  <div class="container-bottom">
+    <div class="days-remaining">
+      20 days remaining
+    </div>
+  <div class="pomodoro">
+    <%= button_to new_goal_path, method: :get, class: "btn btn-primary add-goal-button" do %>
+    <span>+</span>
+    <% end %>
   </div>
-
-  <div class="days-remaining">
-    20 days remaining
   </div>
 
   <div class="new-task-container">
@@ -38,13 +41,15 @@
     <button class="add-task-button">+</button>
   </div>
 
-
 </div>
+
 
 <div class="container-bottom">
  <div class="pomodoro">
     <button class="pomodoro-button">Pomodoro</button>
+
     <button class="button-add-functionality">+</button>
+
   </div>
 </div>
 
