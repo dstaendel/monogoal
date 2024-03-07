@@ -1,3 +1,12 @@
+.tasks-container {
+  background: white;
+  width: 100%;
+  min-height: 100vh;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  padding-top: 5px;
+}
+
 .tasks-container ul {
   list-style: none;
   padding-left: 0;
@@ -9,11 +18,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(107, 107, 107, 0.2);
+}
+
+.task-item a {
+  text-decoration: none;
+  color: #828282;
 }
 
 .task-title {
