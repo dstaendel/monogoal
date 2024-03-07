@@ -28,28 +28,39 @@
     </div>
     </div>
   <div class="container-center">
+
+
   <div class="progress-message">
-    You're doing great! -Emma
+<% if @quote %>
+  <div class="quote">
+    <p><%= @quote["q"] %></p>
+    <p><strong>- <%= @quote["a"] %></strong></p>
   </div>
+<% else %>
+  <p>No quote found.</p>
+<% end %>
+  </div>
+
+
   <div class="container">
     <%= image_tag("plant.webp", alt: "Beschreibung des Bildes") %>
   </div>
+      <div class="days-remaining">
+      20 days remaining
+    </div>
 </div>
 
   <div class="container-bottom">
-    <div class="days-remaining">
-      20 days remaining
-    </div>
   <div class="pomodoro">
-   <button class="pomodoro-button">Placeholder</button>
+    <button class="pomodoro-button"><i class="fas fa-book"></i></button>
 <div class="dropup">
-  <button class="button-add-functionality mx-3" data-bs-toggle="dropdown" aria-expanded="false"></button>
+  <button class="button-add-functionality mx-5" data-bs-toggle="dropdown" aria-expanded="false"></button>
   <div class="dropdown-menu">
     <%= link_to "Add date 🗓️", edit_date_path(@goal), class: "dropdown-item " %> <%# <-- Add a Date  %>
     <%= link_to "Add task 📝", goal_tasks_path(@goal), class: "dropdown-item" %> <%# <-- Add a Task  %>
   </div>
 </div>
-     <button class="pomodoro-button">Placeholder</button>
+    <button class="pomodoro-button"><i class="fas fa-clock"></i></button>
   </div>
   </div>
 </div>
