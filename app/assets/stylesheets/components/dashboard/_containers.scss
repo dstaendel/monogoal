@@ -75,14 +75,14 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
-.pomodoro-button, .add-goal-button {
-  background-color: #e7e7e7;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  margin: 5px;
-  cursor: pointer;
-}
+// .pomodoro-button, .add-goal-button {
+//   background-color: #e7e7e7;
+//   border: none;
+//   border-radius: 8px;
+//   padding: 10px 20px;
+//   margin: 5px;
+//   cursor: pointer;
+// } MOVING THISONE TO btn-add-functionality .SCSS
 
 .container img {
   width: 100%;        /* Stellt sicher, dass das Bild die Breite des Containers ausfüllt */
@@ -91,7 +91,7 @@
 }
 
 .pomodoro {
-display: flex;
+  display: flex;
   justify-content: center; /* Zentriert den Inhalt horizontal */
   align-items: center; /* Zentriert den Inhalt vertikal */
 
