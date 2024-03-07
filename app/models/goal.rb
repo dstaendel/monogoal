@@ -3,5 +3,4 @@ class Goal < ApplicationRecord
   has_many :subtasks
 
   validates :title, presence: true
-  validates :title, uniqueness: true
 end
