@@ -6,7 +6,8 @@
   border: 0.3px solid #e9e9e9;
   border-radius: 5px;
   background-color: #fdfdfd;
-  box-shadow: 0 0 10px rgba(107, 107, 107, 0.2)
+  box-shadow: 0 0 10px rgba(107, 107, 107, 0.2);
+  margin: 10px;
 }
 
 .task-input {
@@ -27,7 +28,7 @@
   background-color: #89C2EC;
   color: white;
   font-weight: bold;
-  font-size: 35px; 
+  font-size: 35px;
   border: none;
   cursor: pointer;
   border-radius: 3px;
@@ -42,4 +43,17 @@
 
 .add-task-button:hover {
   background-color: #3090d5;
+}
+
+.inline-form {
+  display: inline;
+}
+
+.task-delete {
+  background-color: rgb(221, 147, 147);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 5px 11px;
+  border-radius: 5px;
 }
