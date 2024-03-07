@@ -32,3 +32,13 @@
   top: 45%;
   transform: translate(-50%, -50%);
 }
+
+// .dropup {
+//   position: relative; /* Ensures dropdown-menu is positioned relative to this container */
+// }
+
+.dropup .dropdown-menu {
+  left: 50%; /* Start the menu in the center of the button */
+  transform: translateX(-50%); /* Move it back by half of its own width to center it */
+  bottom: 100%; /* Adjust this value as needed to position the menu right above the button */
+}

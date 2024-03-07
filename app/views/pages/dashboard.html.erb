@@ -1,3 +1,4 @@
+
 <h1>Dashboard#home</h1>
 <p>Find me in app/views/pages/dashboard.html.erb</p>
 
@@ -6,18 +7,53 @@
 <p>Use: Daily Use. Track your goal, edit subtasks, etc.</p>
 <p>On the dashboard you see your goal and the functionalities you chose (date, subtasks, etc.).</p>
 
+<%# <h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+
+<h2>This is the landing page</h2>
+<p>For: Users without login</p>
+<p>Use: Explanation of the app</p>
+
+<p>Content: Maybe some tools (pomodoro timer) </p> %>
 <% unless @goal.nil? %>
-    <div>
-      <h2><%= @goal.title %> <%= @goal.emoji %></h2>
-    </div>
 
-    <div>
-      <%= link_to "Add a date to your goal", edit_date_path(@goal), class: "btn btn-warning" %>
-    </div>
+<div class="container-main">
 
-    <div>
-      <%= link_to "Add a task to your goal", goal_tasks_path(@goal), class: "btn btn-primary" %>
+  <div class="container-top">
+    <div class="goal-card">
+      Your goal
     </div>
+    <div class="goal-title">
+      <h2><%= @goal.title %> <%= @goal.emoji %></h2> <%# <-------------------------------- GOAL TITLE + EMOJI from DB  %>
+    </div>
+    </div>
+  <div class="container-center">
+  <div class="progress-message">
+    You're doing great! -Emma
+  </div>
+  <div class="container">
+    <%= image_tag("plant.webp", alt: "Beschreibung des Bildes") %>
+  </div>
+</div>
+
+  <div class="container-bottom">
+    <div class="days-remaining">
+      20 days remaining
+    </div>
+  <div class="pomodoro">
+   <button class="pomodoro-button">Placeholder</button>
+<div class="dropup">
+  <button class="button-add-functionality mx-3" data-bs-toggle="dropdown" aria-expanded="false"></button>
+  <div class="dropdown-menu">
+    <%= link_to "Add date 🗓️", edit_date_path(@goal), class: "dropdown-item " %> <%# <-- Add a Date  %>
+    <%= link_to "Add task 📝", goal_tasks_path(@goal), class: "dropdown-item" %> <%# <-- Add a Task  %>
+  </div>
+</div>
+     <button class="pomodoro-button">Placeholder</button>
+  </div>
+  </div>
+</div>
+
 <% else %>
   <%= link_to new_goal_path do %>
     <div>
