@@ -8,20 +8,22 @@ class Goal < ApplicationRecord
     completed_tasks = tasks.where(is_done: true).count
     total_tasks = tasks.count
     (completed_tasks.to_f / total_tasks) * 100
+    return 0 if progress.blank? || progress.zero?
   end
 
  private
 
-  def ensure_progression
-    new_completion_pct = calculate_completion_pct
-    if new_completion_pct < self.current_completion_pct
-      errors.add(:base, "Tree cannot shrink!")
-      throw :abort
-    else
-      self.completion_image = determine_tree_image(new_completion_pct)
-      self.current_completion_pct = new_completion_pct
-    end
+ def ensure_progression
+  new_completion_pct = calculate_completion_pct || 0
+  current_pct = self.current_completion_pct || 0
+  if new_completion_pct < current_pct
+    errors.add(:base, "Tree cannot shrink!")
+    throw :abort
+  else
+    self.completion_image = determine_tree_image(new_completion_pct)
+    self.current_completion_pct = new_completion_pct
   end
+end
 
   def determine_tree_image(completion_pct)
     # Implementation remains the same as previously described
