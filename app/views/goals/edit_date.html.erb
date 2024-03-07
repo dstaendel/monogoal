@@ -1,5 +1,4 @@
-<%= simple_form_for @goal do |f| %>
-  <%= f.input :start_time, as: :date, html5: true %>
-  <%= f.input :end_time, as: :date, html5: true %>
+<%= simple_form_for @goal, data: { controller: "datepicker" } do |f| %>
+  <%= f.input :start_time, label: "Set Your Dates, Track Your Journey!", as: :string, input_html: { data: { datepicker_target: "date" } } %>
   <%= f.button :submit %>
 <% end %>
