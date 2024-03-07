@@ -15,8 +15,6 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  get 'dashboard', to: 'dashboard#show'
-
   resources :goals do
     resources :tasks, except: %i[show, new]
   end
