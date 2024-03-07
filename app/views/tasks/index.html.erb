@@ -1,8 +1,4 @@
-<div class="container">
-  <div>
-    <%= link_to "Back to dashboard", root_path, class: "btn btn-primary" %>
-  </div>
-
+<div class="tasks-container">
   <div>
     <%= render "form", task: @task %>
   </div>
@@ -18,5 +14,9 @@
         </li>
       <% end %>
     </ul>
+  </div>
+
+  <div>
+    <%= link_to "⬅", root_path, class: "back-to-dashboard" %>
   </div>
 </div>
