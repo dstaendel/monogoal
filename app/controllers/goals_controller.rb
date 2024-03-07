@@ -34,6 +34,10 @@ class GoalsController < ApplicationController
     end
 
     @goal = Goal.find(params[:id])
+    time_range = params["goal"]["start_time"]
+    dates = time_range.split(" to ")
+    @goal.start_time = dates.first
+    @goal.end_time = dates.last
     @goal.update!(goal_params)
     redirect_to root_path
   end
