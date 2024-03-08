@@ -1,0 +1,30 @@
+.tasks-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+#tasks-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
