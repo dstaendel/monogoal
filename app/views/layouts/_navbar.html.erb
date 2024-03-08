@@ -1,7 +1,7 @@
 <nav class="mynavbar navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
   <!-- For line 4, href="PLACEHOLDER" is if we want a redirect the user if he clicks  on it- Dominic %> -->
-<a class="navbar-brand" href="PLACEHOLDER"><%= time_based_greeting %> <%= current_user.name %>! <%= time_based_emoji %></a>
+<a class="navbar-brand" href="PLACEHOLDER"><%= time_based_greeting %> <%= current_user ? current_user.name : "Visitor" %>! <%= time_based_emoji %></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
