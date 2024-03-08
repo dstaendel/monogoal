@@ -1,5 +1,4 @@
 <%= simple_form_for([@goal, @task], html: { class: "new-task-container" }) do |f| %>
   <%= f.input :title, input_html: { class: 'task-input', placeholder: "What's your new task?" }, label: false, wrapper: false %>
-  <%= f.input :percentage, as: :range %>
   <%= f.button :submit, "+", class: "add-task-button" %>
 <% end %>
