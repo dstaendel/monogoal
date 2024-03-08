@@ -1,0 +1,54 @@
+.tasks-container-main-edit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+
+  //backgground
+  background: white;
+  width: 100%;
+  min-height: 100vh;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  padding-top: 5px;
+}
+
+.task-info-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+
+.progress-container{
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 35px;
+  box-shadow: 0 0 10px rgba(107, 107, 107, 0.2);
+  margin-left: 40px;
+  padding-bottom: 11px;
+
+}
+
+.progress-word {
+  font-size: small;
+}
+
+
+.progress-porcentage {
+  font-size: 3rem;
+  font-weight: bold;
+
+}
+
+.task-edit-delete {
+  background-color: rgb(255, 255, 255);
+  color: rgb(221, 147, 147);
+  border: solid;
+  cursor: pointer;
+  padding: 5px 11px;
+  border-radius: 5px;
+  margin-right: 40px;
+}

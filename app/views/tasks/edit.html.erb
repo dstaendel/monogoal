@@ -1,3 +1,20 @@
-<div>
-  <%= render "form", task: @task %>
+<div class="tasks-container-main-edit">
+
+  <div>
+    <%= render "edit-form", task: @task %>
+  </div>
+
+  <div class=task-info-container>
+    <div class="progress-container">
+      <div class="progress-word">Progress</div>
+      <div class="progress-porcentage"><%= @task.percentage %>%</div>
+    </div>
+    <%= button_to 'Delete Task', goal_task_path(@goal, @task), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: "task-edit-delete", form: {class: "inline-form"} %>
+  </div>
+
+  <div>
+    <%= link_to "⬅",  goal_tasks_path, class: "back-to-dashboard" %>
+  </div>
+
+
 </div>
