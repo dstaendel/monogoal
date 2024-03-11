@@ -7,6 +7,8 @@
   border: 1px solid #ccc;
   border-radius: 20px;
   background-color: white;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 .container-top {
@@ -14,10 +16,7 @@
   margin: 0 auto;
   text-align: center;
   padding: 5px;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
+  border-radius: 50px;
   background-color: #F8F7F4;
   margin-bottom: 11px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px;
@@ -122,7 +121,7 @@
 
 .scroll-container {
   max-height: 125px;
-  overflow-y: scroll; 
+  overflow-y: scroll;
   margin-inline: 10px;
   margin-bottom: 20px;
 }
