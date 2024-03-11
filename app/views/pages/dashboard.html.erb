@@ -3,7 +3,7 @@
 <div class="container-main">
   <div class="container-top">
     <div class="goal-title">
-      <h2><%= @goal.title %> <%= @goal.emoji %></h2> <%# <-------------------------------- GOAL TITLE + EMOJI from DB  %>
+      <h2><%= @goal.title %> <%= @goal.emoji %></h2>
     </div>
   </div>
   <div class="container-center">
@@ -27,15 +27,28 @@
     </div>
   <% end %>
 
-</div>
-
-  <div class="container">
-    <%= image_tag("tree/tree-5.webp", alt: "Beschreibung des Bildes") %>
-      <div class="days-remaining">
-      20 days remaining
+<div class="progress-message">
+    <% if @quote %>
+      <div class="quote">
+        <p><%= @quote["q"] %></p>
+        <p><strong>- <%= @quote["a"] %></strong></p>
       </div>
+    <% else %>
+      <p>No quote found.</p>
+    <% end %>
   </div>
 
+  <div class="container">
+
+<%= image_tag(@goal.image_progress) %>
+
+    <div class="days-remaining">
+    20 days
+    </div>
+
+    <div class="tasks-container">
+    <p><%= @goal.progress %>% reached</p>
+    </div>
 </div>
 
 <div class="container-bottom">

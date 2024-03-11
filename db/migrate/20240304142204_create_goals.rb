@@ -7,7 +7,7 @@ class CreateGoals < ActiveRecord::Migration[7.1]
       t.datetime :start_time
       t.datetime :end_time
       t.string :emoji
-      t.integer :progress
+      t.integer :progress, default: 0
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

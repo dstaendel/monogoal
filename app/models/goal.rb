@@ -1,29 +1,33 @@
 class Goal < ApplicationRecord
   belongs_to :user
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
   validates :title, presence: true
-  # before_save :ensure_progression
+  after_commit :calculate_progress, on: %i[update]
 
-#   def calculate_completion_pct
-#     completed_tasks = tasks.where(is_done: true).count
-#     total_tasks = tasks.count
-#     (completed_tasks.to_f / total_tasks) * 100
-#   end
+  def calculate_progress
+    completed_tasks = tasks.where(done: true).count
+    total_tasks = tasks.count
+    progress = (completed_tasks.to_f / total_tasks) * 100
+  end
 
-#  private
-
-#   def ensure_progression
-#     new_completion_pct = calculate_completion_pct
-#     if new_completion_pct < self.current_completion_pct
-#       errors.add(:base, "Tree cannot shrink!")
-#       throw :abort
-#     else
-#       self.completion_image = determine_tree_image(new_completion_pct)
-#       self.current_completion_pct = new_completion_pct
-#     end
-#   end
-
-#   def determine_tree_image(completion_pct)
-#     # Implementation remains the same as previously described
-#   end
+  def image_progress
+    case progress
+    when 0
+      "SEED.svg"
+    when 0.1..24.99
+      "PLANT-1.svg"
+    when 25..49.99
+      "PLANT-2.svg"
+    when 50..74.99
+      "PLANT-3.svg"
+    when 75..99.99
+      "PLANT-4.svg"
+      # Should have the celebration animation. Needs to be activated by user:
+    when 100
+      "PLANT-4.svg"
+      # Default image. Not set yet.
+    else
+      "PLANT-4.svg"
+    end
+  end
 end
