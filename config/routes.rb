@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   resources :goals do
     resources :tasks, except: %i[show, new]
   end
+
+  get '/pomodoro', to: 'pages#pomodoro'
 end

@@ -1,0 +1,14 @@
+<div class="container m-5">
+<h2>I am Pomodoro Timer</h2>
+
+  <div id="pomodoro"
+  data-controller="pomodoro"
+  data-pomodoro-default-time-value="1500">
+    <div data-pomodoro-target="display">
+      <p>25:00</p>
+    </div>
+    <%= link_to "Start", "#", data: { action: "click->pomodoro#start"}, class: "btn date-update-btn" %>
+    <%= link_to "Stop", "#", data: { action: "click->pomodoro#stop"}, class: "btn date-update-btn" %>
+    <%= link_to "Reset", "#", data: { action: "click->pomodoro#reset"}, class: "btn date-update-btn" %>
+  </div>
+</div>

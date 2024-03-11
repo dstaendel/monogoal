@@ -40,20 +40,7 @@
 
 <div class="container-bottom">
 </div>
-  <div class="navbar-bottom">
-    <div class="pomodoro">
-      <button class="pomodoro-button" id="book"><i class="fas fa-book"></i></button>
-      <div class="dropup nav-circle">
-        <button class="button-add-functionality mx-5" data-bs-toggle="dropdown" aria-expanded="false"></button>
-          <div class="dropdown-menu">
-            <%= link_to "Change Date", edit_date_path(@goal), class: "dropdown-item " %> <%# <-- Add a Date  %>
-            <%= link_to "Task Overview", goal_tasks_path(@goal), class: "dropdown-item" %> <%# <-- Add a Task  %>
-          </div>
-      </div>
-      <button class="pomodoro-button" id="clock"><i class="fas fa-clock"></i></button>
-    </div>
-  </div>
-
+<%= render "shared/navbar_bottom" %>
 
 <% else %>
   <%= link_to new_goal_path do %>
