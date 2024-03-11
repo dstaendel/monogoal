@@ -1,15 +1,10 @@
 <% unless @goal.nil? %>
 
 <div class="container-main">
-
   <div class="container-top">
-    <div class="goal-card">
-      <div class="goal-title">
-        <%= @goal.title %> <%= @goal.emoji %> <%# <-------------------------------- GOAL TITLE + EMOJI from DB  %>
-      </div>
+    <div class="goal-title">
+      <h2><%= @goal.title %> <%= @goal.emoji %></h2> <%# <-------------------------------- GOAL TITLE + EMOJI from DB  %>
     </div>
-  </div>
-
   <div class="container-center">
     <div class="progress-message">
     <% if @quote %>
@@ -21,6 +16,22 @@
       <p>No quote found.</p>
     <% end %>
   </div>
+
+<div data-controller="pagination">
+  <% # Assuming you're iterating through tasks here %>
+  <% @tasks.each do |task| %>
+    <div class="task-item-dashboard" data-pagination-target="taskItem">
+      <%= task.title %>
+      <!-- Display your task content here -->
+    </div>
+  <% end %>
+<div style="text-align: left">
+  <button id="back-button" data-action="click->pagination#back" data-pagination-target="backButton"><</button>
+  <button id="next-button" data-action="click->pagination#next" data-pagination-target="nextButton">></button>
+</div>
+</div>
+
+
 
   <div class="container">
     <%= image_tag("tree/tree-5.webp", alt: "Beschreibung des Bildes") %>
@@ -54,76 +65,3 @@
     </div>
   <% end %>
 <% end %>
-
-
-<div class="container-main">
-  <div class="container-center">
-    <!--  Task JS     -->
-    <div class="tasks-container">
-      <ul id="tasks-list">
-        <% @tasks.each_with_index do |task, index| %>
-          <!-- Initially, we'll hide all tasks and only show them with JavaScript as needed -->
-          <li class="task" id="task_<%= index %>" style="display: none;">
-            <p><%= task.title %></p>
-          </li>
-        <% end %>
-      </ul>
-      </div>
-      <button id="back-button" disabled>Back</button>
-      <button id="next-button">Next</button>
- </div>
-</div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', (event) => {
-    let currentIndex = 0;
-    const pageSize = 5;
-    const tasks = document.querySelectorAll('.task');
-    const tasksCount = tasks.length;
-    const pageCount = Math.ceil(tasksCount / pageSize);
-
-    // show a page of tasks
-    function showPage(pageIndex) {
-      const start = pageIndex * pageSize;
-      const end = start + pageSize;
-      tasks.forEach((task, index) => {
-        task.style.display = (index >= start && index < end) ? 'block' : 'none';
-      });
-    }
-
-    // Initially show the first page of tasks
-    if(tasksCount > 0) {
-      showPage(currentIndex);
-    } else {
-      console.log("No tasks to display.");
-      return;
-    }
-
-    // Function to toggle button states
-    function toggleButtonStates() {
-      document.getElementById('back-button').disabled = currentIndex === 0;
-      document.getElementById('next-button').disabled = currentIndex === pageCount - 1;
-    }
-
-    // Next button functionality
-    document.getElementById('next-button').addEventListener('click', function() {
-      if (currentIndex < pageCount - 1) {
-        currentIndex++;
-        showPage(currentIndex);
-        toggleButtonStates();
-      }
-    });
-
-    // Back button functionality
-    document.getElementById('back-button').addEventListener('click', function() {
-      if (currentIndex > 0) {
-        currentIndex--;
-        showPage(currentIndex);
-        toggleButtonStates();
-      }
-    });
-
-    // Set the initial state of the buttons
-    toggleButtonStates();
-  });
-</script>
