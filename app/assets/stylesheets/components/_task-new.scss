@@ -43,6 +43,7 @@
 
 .add-task-button:hover {
   background-color: #3090d5;
+
 }
 
 .inline-form {
@@ -50,10 +51,13 @@
 }
 
 .task-delete {
-  background-color: rgb(221, 147, 147);
+  background-color: #e77777;
   color: white;
   border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
   cursor: pointer;
-  padding: 5px 11px;
-  border-radius: 5px;
+  padding: 0px 9px;
+  border-radius: 3px;
+  padding-bottom: 2px;
 }

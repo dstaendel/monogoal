@@ -9,7 +9,6 @@
         <li class="task-item">
           <div class="task-title"><%= link_to task.title, edit_goal_task_path(@goal, task) %></div>
           <div class="task-info">
-            <%= button_to 'x', goal_task_path(@goal, task), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: "task-delete", form: {class: "inline-form"} %>
           </div>
         </li>
       <% end %>
@@ -23,7 +22,7 @@
         <div class="dropup nav-circle">
 
           <a href="/" class="button-back mx-5" role="button"></a>
-          
+
         </div>
         <button class="pomodoro-button" id="clock"><i class="fas fa-clock"></i></button>
       </div>
