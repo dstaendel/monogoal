@@ -3,62 +3,55 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["display"]
   static values = {
-    time: Number,
-    defaultTime: Number
+    time: Number
   }
 
   connect() {
-    this.timeValue = this.defaultTimeValue || (25 * 60)
-    console.log(this.displayTarget);
+    console.log("Hello from Pomodoro 🍅");
+    this.timeValue = (25 * 60)
+    this.#updateDisplay(this.timeValue);
   }
 
-  start() {
-    console.log("starting timer");
-    this.countdown(this.timeValue)
-    // this.updateDisplay();
-    // this.stop()
+  start(event) {
+    event.preventDefault();
+    this.#countdown(this.timeValue)
   }
 
-  countdown(duration) {
-    let remainingTime = duration;
-
-    const timer = setInterval(() => {
-      remainingTime -= 1;
-      this.timeValue = remainingTime;
-      this.updateDisplay();
-
-      console.log("formated time", this.formatTime(remainingTime));
-      if (remainingTime <= 0) {
-        clearInterval(timer);
-        console.log("Time's up!")
-      }
-    }, 1000)
-  }
-
-  stop() {
-    console.log("stopping timer");
+  stop(event) {
+    event.preventDefault()
+    console.log("Stopping timer ✋🏻");
     // TODO Make countdown stop
+    clearInterval(this.currentInterval)
   }
 
   reset() {
     // TODO Make Coundown go back to default time
+    // link_to in HTML triggers a GET request and reloads the page
+    // So no code needed here
   }
 
-  formatTime(seconds) {
+  #countdown(duration) {
+    let remainingTime = duration;
+
+      this.currentInterval = setInterval(() => {
+      remainingTime -= 1;
+      this.timeValue = remainingTime;
+
+      this.#updateDisplay(remainingTime);
+      if (remainingTime <= 0) {
+        clearInterval(this.currentInterval);
+      }
+    }, 1000)
+  }
+
+  #updateDisplay(remainingTime) {
+    this.displayTarget.innerHTML = `<p>${this.#formatTime(remainingTime)}</p>`;
+    console.log("Timer is now running 🐌");
+  }
+
+  #formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
-  }
-
-  updateDisplay() {
-    // TODO Display Timer in Display
-    console.log("👻👻");
-    this.changeText(this.formatTime(this.timeValue));
-    console.log(this.displayTarget);
-    // remainingTime
-  }
-
-  changeText(time) {
-    this.displayTarget.innerHTML = `<p>${time}</p>`;
   }
 }

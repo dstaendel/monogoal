@@ -1,7 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :goal
-  # attr_accessor :skip_callbacks # Temporary attribute, not persisted
-
+  validates :title, presence: true
   after_commit :set_new_percentage, on: %i[create destroy]
 
   private

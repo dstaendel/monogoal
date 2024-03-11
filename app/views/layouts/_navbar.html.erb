@@ -1,33 +1,28 @@
 <nav class="mynavbar navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-  <!-- For line 4, href="PLACEHOLDER" is if we want a redirect the user if he clicks  on it- Dominic %> -->
-<a class="navbar-brand" href="PLACEHOLDER"><%= time_based_greeting %> <%= current_user ? current_user.name : "Visitor" %>! <%= time_based_emoji %></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
+    <%= link_to root_path, class: "text-decoration-none" do %>
+      <p class="navbar-brand"><%= time_based_greeting %> <%= current_user ? current_user.name : "Visitor" %>! <%= time_based_emoji %></p>
+    <% end %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <!-- Add the ms-auto class to the following ul element -->
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+          <%= link_to "Tasks", goals_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Subtask</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Archive</a>
+          <%= link_to "Archive", goals_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Profile
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <%= link_to "Profile", edit_user_registration_path, class: "nav-link" %>
+        </li>
+          <li class="nav-item">
             <% if user_signed_in? %>
               <li><%= link_to "Log Out", destroy_user_session_path, data: {turbo_method: :delete }, class: "dropdown-item" %></li>
             <% else %>
               <li><%= link_to "Log In", new_user_session_path, class: "dropdown-item" %></li>
             <% end %>
-          </ul>
         </li>
       </ul>
     </div>

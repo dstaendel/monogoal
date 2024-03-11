@@ -8,6 +8,11 @@
       <% @tasks.each do |task| %>
         <li class="task-item">
           <div class="task-title"><%= link_to task.title, edit_goal_task_path(@goal, task) %></div>
+          <%= task.done %>
+          <form action="/goals/<%= @goal.id%>/tasks/<%= task.id%>" method="patch">
+            <input type="hidden" name="task[done]" value="check">
+            <input type="submit" class="btn btn-primary">
+          </form>
           <div class="task-info">
             <%= button_to 'x', goal_task_path(@goal, task), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: "task-delete", form: {class: "inline-form"} %>
           </div>

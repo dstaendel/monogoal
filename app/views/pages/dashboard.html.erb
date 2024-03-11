@@ -1,47 +1,47 @@
 <% unless @goal.nil? %>
-
-<div class="container-main">
-  <div class="container-top">
-    <div class="goal-title">
-      <h2><%= @goal.title %> <%= @goal.emoji %></h2> <%# <-------------------------------- GOAL TITLE + EMOJI from DB  %>
-    </div>
-  </div>
-  <div class="container-center">
-    <div class="progress-message">
-    <% if @quote %>
-      <div class="quote">
-        <p><%= @quote["q"] %></p>
-        <p><strong>- <%= @quote["a"] %></strong></p>
+  <div class="container-main">
+    <div class="container-top">
+      <div class="goal-title">
+        <h2><%= @goal.title %> <%= @goal.emoji %></h2>
       </div>
-    <% else %>
-      <p>No quote found.</p>
-    <% end %>
-  </div>
-
-<div class="scroll-container">
-  <% # Assuming you're iterating through tasks here %>
-  <% @tasks.each do |task| %>
-    <div class="task-item-dashboard" data-pagination-target="taskItem">
-      <%= task.title %>
-      <!-- Display your task content here -->
     </div>
-  <% end %>
 
-</div>
+    <div class="container-center">
+      <div class="progress-message">
+        <% if @quote %>
+          <div class="quote">
+            <p><%= @quote["q"] %></p>
+            <p><strong>- <%= @quote["a"] %></strong></p>
+          </div>
+        <% else %>
+          <p>No quote found.</p>
+        <% end %>
+      </div>
 
-  <div class="container">
-    <%= image_tag("tree/tree-5.webp", alt: "Beschreibung des Bildes") %>
+      <div class="scroll-container">
+        <% # Assuming you're iterating through tasks here %>
+        <% @tasks.each do |task| %>
+          <div class="task-item-dashboard" data-pagination-target="taskItem">
+            <%= task.title %>
+          </div>
+          <% end %>
+      </div>
+
+    <div class="container">
+      <%= image_tag(@goal.image_progress) %>
+
       <div class="days-remaining">
-      20 days remaining
+      20 days
       </div>
-  </div>
 
-</div>
+      <div class="tasks-container">
+        <p><%= @goal.progress %>% reached</p>
+      </div>
+    </div>
 
-<div class="container-bottom">
-</div>
-<%= render "shared/navbar_bottom" %>
-
+    <div class="container-bottom">
+      <%= render "shared/navbar_bottom" %>
+    </div>
 <% else %>
   <%= link_to new_goal_path do %>
     <div>

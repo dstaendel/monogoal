@@ -15,8 +15,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :goals do
-    resources :tasks, except: %i[show, new]
+  resources :goals, except: %i[index destroy] do
+    resources :tasks, except: %i[show new]
   end
 
   get '/pomodoro', to: 'pages#pomodoro'
