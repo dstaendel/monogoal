@@ -1,47 +1,34 @@
 <% unless @goal.nil? %>
-
-<div class="container-main">
-  <div class="container-top">
-    <div class="goal-title">
-      <h2><%= @goal.title %> <%= @goal.emoji %></h2>
-    </div>
-  </div>
-  <div class="container-center">
-    <div class="progress-message">
-    <% if @quote %>
-      <div class="quote">
-        <p><%= @quote["q"] %></p>
-        <p><strong>- <%= @quote["a"] %></strong></p>
+  <div class="container-main">
+    <div class="container-top">
+      <div class="goal-title">
+        <h2><%= @goal.title %> <%= @goal.emoji %></h2>
       </div>
-    <% else %>
-      <p>No quote found.</p>
-    <% end %>
-  </div>
-
-<div class="scroll-container">
-  <% # Assuming you're iterating through tasks here %>
-  <% @tasks.each do |task| %>
-    <div class="task-item-dashboard" data-pagination-target="taskItem">
-      <%= task.title %>
-      <!-- Display your task content here -->
     </div>
-  <% end %>
 
-</div>
-<div class="progress-message">
-    <% if @quote %>
-      <div class="quote">
-        <p><%= @quote["q"] %></p>
-        <p><strong>- <%= @quote["a"] %></strong></p>
+    <div class="container-center">
+      <div class="progress-message">
+        <% if @quote %>
+          <div class="quote">
+            <p><%= @quote["q"] %></p>
+            <p><strong>- <%= @quote["a"] %></strong></p>
+          </div>
+        <% else %>
+          <p>No quote found.</p>
+        <% end %>
       </div>
-    <% else %>
-      <p>No quote found.</p>
-    <% end %>
-  </div>
 
-  <div class="container">
+      <div class="scroll-container">
+        <% # Assuming you're iterating through tasks here %>
+        <% @tasks.each do |task| %>
+          <div class="task-item-dashboard" data-pagination-target="taskItem">
+            <%= task.title %>
+          </div>
+          <% end %>
+      </div>
 
-<%= image_tag(@goal.image_progress) %>
+    <div class="container">
+      <%= image_tag(@goal.image_progress) %>
 
     <div class="days-remaining">
       <p><%= (@goal.end_time - DateTime.now).to_i / (60 * 60 * 24)%> days</p>
@@ -52,26 +39,14 @@
     </div>
 </div>
 
-<div class="container-bottom">
-</div>
-  <div class="navbar-bottom">
-    <div class="pomodoro">
-      <button class="pomodoro-button" id="book"><i class="fas fa-book"></i></button>
-      <div class="dropup nav-circle">
-        <button class="button-add-functionality mx-5" data-bs-toggle="dropdown" aria-expanded="false"></button>
-          <div class="dropdown-menu">
-            <%= link_to "Change Date", edit_date_path(@goal), class: "dropdown-item " %> <%# <-- Add a Date  %>
-            <%= link_to "Task Overview", goal_tasks_path(@goal), class: "dropdown-item" %> <%# <-- Add a Task  %>
-          </div>
+      <div class="tasks-container">
+        <p><%= @goal.progress %>% reached</p>
       </div>
-      <button class="pomodoro-button" id="clock"><i class="fas fa-clock"></i></button>
     </div>
-  </div>
-</div>
-</div>
 
-
-
+    <div class="container-bottom">
+      <%= render "shared/navbar_bottom" %>
+    </div>
 <% else %>
   <%= link_to new_goal_path do %>
     <div>
