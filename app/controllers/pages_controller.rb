@@ -11,4 +11,8 @@ class PagesController < ApplicationController
       @quote = ZenQuotesService.fetch_random_quote
     end
   end
+
+  def pomodoro
+    
+  end
 end

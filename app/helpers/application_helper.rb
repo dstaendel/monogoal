@@ -1,16 +1,16 @@
 module ApplicationHelper
 
   def time_based_greeting
-    current_hour = Time.current.hour
+    current_hour = Time.current.in_time_zone("Berlin").hour
 
     if current_hour < 12
-      "Good morning"
+      "Good Morning, "
     elsif current_hour < 18
-      "Have a good day"
+      "Good Day, "
     elsif current_hour < 22
-      "Good evening"
+      "Good Evening, "
     else
-      "Have a good night"
+      "Good Night, "
     end
   end
 
@@ -24,7 +24,7 @@ module ApplicationHelper
     elsif current_hour < 22
       "🌅"
     else
-      "🌚"
+      "🌙"
     end
   end
 

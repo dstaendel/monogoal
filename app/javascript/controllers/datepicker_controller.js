@@ -9,8 +9,7 @@ export default class extends Controller {
     console.log(this.dateTarget);
     // flatpickr(this.element)
     flatpickr(this.dateTarget, {
-      mode: "range",
-      showMonths: 2
+      mode: "range"
     });
   }
 }
