@@ -20,9 +20,6 @@
 <div class="container-main">
 
   <div class="container-top">
-    <div class="goal-card">
-      Your goal
-    </div>
     <div class="goal-title">
       <h2><%= @goal.title %> <%= @goal.emoji %></h2> <%# <-------------------------------- GOAL TITLE + EMOJI from DB  %>
     </div>
@@ -31,21 +28,28 @@
 
 
   <div class="progress-message">
-<% if @quote %>
-  <div class="quote">
-    <p><%= @quote["q"] %></p>
-    <p><strong>- <%= @quote["a"] %></strong></p>
-  </div>
-<% else %>
-  <p>No quote found.</p>
-<% end %>
+    <% if @quote %>
+      <div class="quote">
+        <p><%= @quote["q"] %></p>
+        <p><strong>- <%= @quote["a"] %></strong></p>
+      </div>
+    <% else %>
+      <p>No quote found.</p>
+    <% end %>
   </div>
 
   <div class="container">
-    <%= image_tag("tree/tree-5.webp", alt: "Beschreibung des Bildes") %>
-      <div class="days-remaining">
-      20 days remaining
+
+<%= image_tag(@goal.image_progress) %>
+
+    <div class="days-remaining">
+    20 days
     </div>
+
+    <div class="tasks-container">
+    <p><%= @goal.process %>% reached</p>
+    </div>
+
 </div>
 
   <div class="container-bottom">
@@ -78,7 +82,7 @@
 <!--  Task JS     -->
 <div class="tasks-container">
   <ul id="tasks-list">
-    <% @tasks.each_with_index do |task, index| %>
+    <% @tasks&.each_with_index do |task, index| %>
       <!-- Initially, we'll hide all tasks and only show them with JavaScript as needed -->
       <li class="task" id="task_<%= index %>" style="display: none;">
         <p><%= task.title %></p>
