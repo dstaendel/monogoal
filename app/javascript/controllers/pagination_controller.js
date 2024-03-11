@@ -1,46 +1,44 @@
-import { Controller } from "stimulus";
+// app/javascript/controllers/pagination_controller.js
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["taskItem", "scrollContainer"];
+  static targets = ["taskItem", "backButton", "nextButton"];
 
   initialize() {
     this.currentIndex = 0;
-    this.pageSize = 5; // Number of items to load each time
-    this.loading = false; // Prevent multiple loads at the same time
-    this.loadMore(); // Initially load tasks
+    this.pageSize = 5;
+    this.tasksCount = this.taskItemTargets.length;
+    this.pageCount = Math.ceil(this.tasksCount / this.pageSize);
+    this.toggleButtonStates();
+    this.showPage(this.currentIndex);
   }
 
-  connect() {
-    this.scrollContainerTarget.addEventListener('scroll', () => this.checkScroll());
+  showPage(pageIndex) {
+    const start = pageIndex * this.pageSize;
+    const end = start + this.pageSize;
+    this.taskItemTargets.forEach((task, index) => {
+      task.style.display = (index >= start && index < end) ? 'block' : 'none';
+    });
   }
 
-  disconnect() {
-    this.scrollContainerTarget.removeEventListener('scroll', () => this.checkScroll());
-  }
-
-  loadMore() {
-    if (this.loading) return;
-    this.loading = true;
-
-    const startIndex = this.currentIndex * this.pageSize;
-    const endIndex = startIndex + this.pageSize;
-    const itemsToShow = this.taskItemTargets.slice(startIndex, endIndex);
-
-    itemsToShow.forEach(task => task.style.display = 'block');
-
-    if (itemsToShow.length === 0 || itemsToShow.length < this.pageSize) {
-      // Optionally handle the end of the list (e.g., hide the scroll container or show a message)
-    } else {
-      this.currentIndex++; // Prepare for the next load
+  next() {
+    if (this.currentIndex < this.pageCount - 1) {
+      this.currentIndex++;
+      this.showPage(this.currentIndex);
+      this.toggleButtonStates();
     }
-
-    this.loading = false;
   }
 
-  checkScroll() {
-    const { scrollTop, scrollHeight, clientHeight } = this.scrollContainerTarget;
-    if (scrollTop + clientHeight >= scrollHeight - 100) { // 100px before reaching the bottom
-      this.loadMore();
+  back() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      this.showPage(this.currentIndex);
+      this.toggleButtonStates();
     }
+  }
+
+  toggleButtonStates() {
+    this.backButtonTarget.disabled = this.currentIndex === 0;
+    this.nextButtonTarget.disabled = this.currentIndex === this.pageCount - 1;
   }
 }

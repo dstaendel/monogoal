@@ -119,3 +119,10 @@
   align-items: center; /* Zentriert den Inhalt vertikal */
 
 }
+
+.scroll-container {
+  max-height: 125px;
+  overflow-y: scroll; 
+  margin-inline: 10px;
+  margin-bottom: 20px;
+}
