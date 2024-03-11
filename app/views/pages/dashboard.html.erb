@@ -44,7 +44,7 @@
 <%= image_tag(@goal.image_progress) %>
 
     <div class="days-remaining">
-    20 days
+      <p><%= (@goal.end_time - DateTime.now).to_i / (60 * 60 * 24)%> days</p>
     </div>
 
     <div class="tasks-container">
