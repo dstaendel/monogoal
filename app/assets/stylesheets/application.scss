@@ -29,6 +29,8 @@
 @import "components/task-edit";
 
 @import "components/dashboard-task/dashboard-task";
+@import "components/navbar-edit-tasks";
+
 
 
 
@@ -36,6 +38,8 @@ body {
   background-color: #AFDAEE; /* This sets the background color to white */
   height: 100vh;
 }
+
+p {margin-bottom: 0;}
 
 .task-item a {
   text-decoration: none;

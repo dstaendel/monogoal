@@ -63,3 +63,12 @@
   transform: translateX(-50%); /* Move it back by half of its own width to center it */
   bottom: 100%; /* Adjust this value as needed to position the menu right above the button */
 }
+
+#clock {
+  margin-left: -20px;
+}
+
+#book {
+  margin-right: -20px;
+
+}

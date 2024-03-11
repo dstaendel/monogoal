@@ -1,33 +1,33 @@
-<%#
-<h1>Dashboard#home</h1>
-<p>Find me in app/views/pages/dashboard.html.erb</p>
-
-<h2>This is the dashboard (mainpage)</h2>
-<p>For: Logged in users</p>
-<p>Use: Daily Use. Track your goal, edit subtasks, etc.</p>
-<p>On the dashboard you see your goal and the functionalities you chose (date, subtasks, etc.).</p>
-
-<%# <h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-<h2>This is the landing page</h2>
-<p>For: Users without login</p>
-<p>Use: Explanation of the app</p>
-
-<p>Content: Maybe some tools (pomodoro timer) </p> %>
 <% unless @goal.nil? %>
 
 <div class="container-main">
-
   <div class="container-top">
     <div class="goal-title">
-      <h2><%= @goal.title %> <%= @goal.emoji %></h2> <%# <-------------------------------- GOAL TITLE + EMOJI from DB  %>
+      <h2><%= @goal.title %> <%= @goal.emoji %></h2>
     </div>
-    </div>
+  </div>
   <div class="container-center">
+    <div class="progress-message">
+    <% if @quote %>
+      <div class="quote">
+        <p><%= @quote["q"] %></p>
+        <p><strong>- <%= @quote["a"] %></strong></p>
+      </div>
+    <% else %>
+      <p>No quote found.</p>
+    <% end %>
+  </div>
 
+<div class="scroll-container">
+  <% # Assuming you're iterating through tasks here %>
+  <% @tasks.each do |task| %>
+    <div class="task-item-dashboard" data-pagination-target="taskItem">
+      <%= task.title %>
+      <!-- Display your task content here -->
+    </div>
+  <% end %>
 
-  <div class="progress-message">
+<div class="progress-message">
     <% if @quote %>
       <div class="quote">
         <p><%= @quote["q"] %></p>
@@ -49,24 +49,24 @@
     <div class="tasks-container">
     <p><%= @goal.progress %>% reached</p>
     </div>
-
 </div>
 
-  <div class="container-bottom">
-  <div class="pomodoro">
-    <button class="pomodoro-button"><i class="fas fa-book"></i></button>
-<div class="dropup">
-  <button class="button-add-functionality mx-5" data-bs-toggle="dropdown" aria-expanded="false"></button>
-  <div class="dropdown-menu">
-    <%= link_to "Add date 🗓️", edit_date_path(@goal), class: "dropdown-item " %> <%# <-- Add a Date  %>
-    <%= link_to "Add task 📝", goal_tasks_path(@goal), class: "dropdown-item" %> <%# <-- Add a Task  %>
-  </div>
+<div class="container-bottom">
 </div>
-    <button class="pomodoro-button"><i class="fas fa-clock"></i></button>
+  <div class="navbar-bottom">
+    <div class="pomodoro">
+      <button class="pomodoro-button" id="book"><i class="fas fa-book"></i></button>
+      <div class="dropup nav-circle">
+        <button class="button-add-functionality mx-5" data-bs-toggle="dropdown" aria-expanded="false"></button>
+          <div class="dropdown-menu">
+            <%= link_to "Change Date", edit_date_path(@goal), class: "dropdown-item " %> <%# <-- Add a Date  %>
+            <%= link_to "Task Overview", goal_tasks_path(@goal), class: "dropdown-item" %> <%# <-- Add a Task  %>
+          </div>
+      </div>
+      <button class="pomodoro-button" id="clock"><i class="fas fa-clock"></i></button>
+    </div>
   </div>
-  </div>
-</div>
-</div>
+
 
 <% else %>
   <%= link_to new_goal_path do %>
@@ -75,76 +75,3 @@
     </div>
   <% end %>
 <% end %>
-
-
-<div class="container-main">
-  <div class="container-center">
-<!--  Task JS     -->
-<div class="tasks-container">
-  <ul id="tasks-list">
-    <% @tasks&.each_with_index do |task, index| %>
-      <!-- Initially, we'll hide all tasks and only show them with JavaScript as needed -->
-      <li class="task" id="task_<%= index %>" style="display: none;">
-        <p><%= task.title %></p>
-      </li>
-    <% end %>
-  </ul>
-  </div>
-  <button id="back-button" disabled>Back</button>
-  <button id="next-button">Next</button>
-</div>
-  </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', (event) => {
-    let currentIndex = 0;
-    const pageSize = 5;
-    const tasks = document.querySelectorAll('.task');
-    const tasksCount = tasks.length;
-    const pageCount = Math.ceil(tasksCount / pageSize);
-
-    // show a page of tasks
-    function showPage(pageIndex) {
-      const start = pageIndex * pageSize;
-      const end = start + pageSize;
-      tasks.forEach((task, index) => {
-        task.style.display = (index >= start && index < end) ? 'block' : 'none';
-      });
-    }
-
-    // Initially show the first page of tasks
-    if(tasksCount > 0) {
-      showPage(currentIndex);
-    } else {
-      console.log("No tasks to display.");
-      return;
-    }
-
-    // Function to toggle button states
-    function toggleButtonStates() {
-      document.getElementById('back-button').disabled = currentIndex === 0;
-      document.getElementById('next-button').disabled = currentIndex === pageCount - 1;
-    }
-
-    // Next button functionality
-    document.getElementById('next-button').addEventListener('click', function() {
-      if (currentIndex < pageCount - 1) {
-        currentIndex++;
-        showPage(currentIndex);
-        toggleButtonStates();
-      }
-    });
-
-    // Back button functionality
-    document.getElementById('back-button').addEventListener('click', function() {
-      if (currentIndex > 0) {
-        currentIndex--;
-        showPage(currentIndex);
-        toggleButtonStates();
-      }
-    });
-
-    // Set the initial state of the buttons
-    toggleButtonStates();
-  });
-</script>
