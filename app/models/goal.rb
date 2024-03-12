@@ -1,3 +1,5 @@
+require 'date'
+
 class Goal < ApplicationRecord
   belongs_to :user
   has_many :tasks, dependent: :destroy
@@ -9,6 +11,11 @@ class Goal < ApplicationRecord
     total_tasks = tasks.count
     progress = (completed_tasks.to_f / total_tasks) * 100
   end
+
+  # def remaining_days
+  #   seconds = (goal.end_time - DateTime.now).to_i
+  #   days = seconds / (60 * 60 * 24)
+  # end
 
   def image_progress
     case progress
