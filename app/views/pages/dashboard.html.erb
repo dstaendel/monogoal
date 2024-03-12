@@ -18,14 +18,19 @@
         <% end %>
       </div>
 
-      <div class="scroll-container">
-        <% # Assuming you're iterating through tasks here %>
-        <% @tasks.each do |task| %>
-          <div class="task-item-dashboard" data-pagination-target="taskItem">
-            <%= task.title %>
-          </div>
-          <% end %>
-      </div>
+<div class="scroll-container">
+  <% @tasks.each do |task| %>
+    <div class="task-item-dashboard" data-pagination-target="taskItem">
+      <%= task.title %>
+     <form action="/goals/<%= @goal.id %>/tasks/<%= task.id %>" method="post" class="update-task-form">
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="task[done]" value="check">
+  <input type="submit" class="btn btn-primary">
+</form>
+    </div>
+  <% end %>
+</div>
+
 
     <div class="container">
       <%= image_tag(@goal.image_progress) %>
@@ -47,6 +52,7 @@
     <div class="container-bottom">
       <%= render "shared/navbar_bottom" %>
     </div>
+    
 <% else %>
   <%= link_to new_goal_path do %>
     <div>
@@ -54,3 +60,35 @@
     </div>
   <% end %>
 <% end %>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+
+    document.querySelectorAll('.update-task-form').forEach(function(form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var action = this.action;
+
+
+        fetch(action, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+          },
+          body: new URLSearchParams(new FormData(this)).toString()
+        })
+        .then(response => {
+          if (response.ok) {
+            console.log('Task updated successfully');
+                     window.location.reload();
+          } else {
+            throw new Error('Failed to update task');
+          }
+        })
+        .catch(error => console.error('Error:', error));
+      });
+    });
+  });
+</script>
