@@ -20,21 +20,20 @@ class Goal < ApplicationRecord
   def image_progress
     case progress
     when 0
-      "SEED.svg"
+      "SEED.png"
     when 0.1..24.99
-      "PLANT-1.svg"
+      "PLANT-1.png"
     when 25..49.99
-      "PLANT-2.svg"
+      "PLANT-2.png"
     when 50..74.99
-      "PLANT-3.svg"
+      "PLANT-3.png"
     when 75..99.99
-      "PLANT-4.svg"
+      "PLANT-4.png"
       # Should have the celebration animation. Needs to be activated by user:
     when 100
-      "PLANT-4.svg"
-      # Default image. Not set yet.
+      "PLANT-4.png"
     else
-      "PLANT-4.svg"
+      "tree_home.svg"
     end
   end
 end
