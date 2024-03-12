@@ -38,21 +38,17 @@
 
 
     <div class="container">
-<%= image_tag(@goal.image_progress, id: "goal-image-progress") %>
-
-      <div class="days-remaining">
-        <p><%= (@goal.end_time - DateTime.now).to_i / (60 * 60 * 24)%> days</p>
-      </div>
-
-      <div class="tasks-container">
-      <p><%= @goal.progress %>% reached</p>
-      </div>
-  </div>
-
-      <div class="tasks-container">
-<p id="goal-progress-text"><%= @goal.progress %>% reached</p>
-      </div>
+      <%= image_tag(@goal.image_progress) %>
     </div>
+
+  <% unless @goal.end_time.nil? %>
+    <div class="days-remaining">
+      <p><%= (@goal.end_time - DateTime.now).to_i / (60 * 60 * 24)%> days</p>
+    </div>
+  <% else %>
+  <% end %>
+
+</div>
 
     <div class="container-bottom">
       <%= render "shared/navbar_bottom" %>
