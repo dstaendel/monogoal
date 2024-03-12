@@ -1,14 +1,30 @@
-<div class="container mt-5" data-controller="pomodoro" >
-  <h2 class="text-center">I am Pomodoro Timer 🍅</h2>
+<div class="timer-container-main">
+  <div class="timer-card">
+    <div class="container mt-2" data-controller="pomodoro" id="timer-container" >
+      <h2 class="pomodoro-title ">POMODORO</h2>
+      <div>
+        <div data-pomodoro-target="display" id="timer" class="d-flex justify-content-center" style="font-size: 20px;">
+          <!-- Change value (25:00) in pomodoro_controller.js -->
+        </div>
+        <div class="buttons-pomodoro d-flex justify-content-center">
+          <%= link_to "<i class='fas fa-play'></i>".html_safe, "#", data: { action: "click->pomodoro#start"}, class: "btn", id: "start" %>
+          <%= link_to "<i class='fas fa-pause'></i>".html_safe, "#", data: { action: "click->pomodoro#stop"}, class: "btn", id: "pause" %>
+          <%= link_to "<i class='fas fa-sync-alt'></i>".html_safe, "#", data: { action: "click->pomodoro#reset"}, class: "btn", id: "reset" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <div>
-    <div data-pomodoro-target="display" class="mt-5 d-flex justify-content-center" style="font-size: 20px;">
-      <!-- Change value (25:00) in pomodoro_controller.js -->
+
+<div class="navbar-bottom">
+  <div class="pomodoro">
+    <button class="pomodoro-button" id="book"><i class="fas fa-book"></i></button>
+    <div class="dropup nav-circle">
+
+      <a href="/" class="button-back mx-5" role="button"></a>
+
     </div>
-    <div class="buttons-pomodoro mt-5 d-flex justify-content-center">
-      <%= link_to "Start", "#", data: { action: "click->pomodoro#start"}, class: "btn" %>
-      <%= link_to "Stop", "#", data: { action: "click->pomodoro#stop"}, class: "btn" %>
-      <%= link_to "Reset", "#", data: { action: "click->pomodoro#reset"}, class: "btn" %>
-    </div>
+    <button class="pomodoro-button" id="clock"><i class="fas fa-clock"></i></button>
   </div>
 </div>

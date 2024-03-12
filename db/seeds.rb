@@ -11,6 +11,7 @@ emma = User.create(name: "Emma", email: "emma@test.com", password: "123456")
 seb = User.create(name: "Sebastian", email: "sebastian@email.com", password: "123456")
 dominic = User.create(name: "Dominic", email: "dominic@email.com", password: "123456")
 jerome = User.create(name: "Jerome", email: "jerome@email.com", password: "123456")
+ben = User.create(name: "Ben", email: "ben@email.com", password: "123456")
 
 puts "Creating Emma's Goals... 🤷🏼‍♀️"
 
@@ -110,7 +111,7 @@ goal8 = Goal.new(
 goal8.user = jerome
 goal8.save
 
-puts "Creating Jerome's Tasks "
+puts "Creating Jerome's Tasks"
 
 task01 = Task.new(title: "Research Coding Bootcamps")
 task01.goal_id = 8
@@ -142,5 +143,44 @@ task09.save
 task10 = Task.new(title: "Celebrate")
 task10.goal_id = 8
 task10.save
+
+puts "Creating Ben's Tasks "
+
+goal9 = Goal.new(
+  title: "Learn Python",
+  description: "Learning how to use python so I can finally delete Facebook 😈",
+  start_time: "Mon, 25 Mar 2024",
+  end_time: "Fri, 12 Apr 2024",
+  emoji: "📇",
+  active: true,
+  progress: 0
+  )
+goal9.user = ben
+goal9.save
+
+goal10 = Goal.new(
+  title: "Stop Smoking",
+  description: "Is#t is obvious?",
+  start_time: "Mon, 15 Apr 2024",
+  end_time: "Wed, 01 May 2024",
+  active: false,
+  emoji: "🚭",
+  progress: 0
+  )
+goal10.user = ben
+goal10.save
+
+goal11 = Goal.new(
+  title: "Learn how to Code",
+  description: "Visit Le Wagon Bootcamp",
+  start_time: "Mon, 08 Jan 2024",
+  end_time: "Tue, 12 Mar 2024",
+  emoji: "📇",
+  active: false,
+  progress: 100
+  )
+
+goal11.user = ben
+goal11.save
 
 puts "Created #{User.count} Users & #{Goal.count} Goals 🌱🌱🌱 with #{Task.count} Tasks"

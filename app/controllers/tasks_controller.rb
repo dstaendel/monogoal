@@ -25,7 +25,8 @@ class TasksController < ApplicationController
     mark_as_done
     @task.save
     update_goal_progress
-    redirect_to goal_tasks_path(@task.goal.id)
+    p params
+    # redirect_to goal_tasks_path(@task.goal.id)
   end
 
   def destroy

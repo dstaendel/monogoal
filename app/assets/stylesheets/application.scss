@@ -15,6 +15,7 @@
 
 //Container
 @import "components/dashboard/containers";
+@import "components/home/home";
 
 //
 @import "components/alert";
@@ -30,6 +31,8 @@
 
 @import "components/dashboard-task/dashboard-task";
 @import "components/navbar-edit-tasks";
+@import "components/pomodoro-front";
+
 
 
 
@@ -39,7 +42,9 @@ body {
   height: 100vh;
 }
 
-p {margin-bottom: 0;}
+p {
+  margin-bottom: 0;
+}
 
 .task-item a {
   text-decoration: none;
