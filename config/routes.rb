@@ -19,5 +19,5 @@ Rails.application.routes.draw do
     resources :tasks, except: %i[show new]
   end
 
-  get '/pomodoro', to: 'pages#pomodoro'
+  get '/pomodoro', to: 'pages#pomodoro', as: "pomodoro"
 end
