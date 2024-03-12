@@ -1,5 +1,10 @@
 class GoalsController < ApplicationController
 
+  # TODO: BEN > ADD INDEX ACTION
+  def index
+
+  end
+
   def show
     @goal = Goal.find(params[:id])
   end
