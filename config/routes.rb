@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   # If not authenticated, route to the home page
   root to: 'pages#home'
-  get '/home', to: 'pages#home'
 
   get 'goals/edit_date/:id', to: 'goals#edit_date', as: "edit_date"
 
