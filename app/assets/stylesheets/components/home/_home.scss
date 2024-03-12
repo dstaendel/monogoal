@@ -1,0 +1,27 @@
+.container-home {
+  margin: 50px 50px 50px 50px;
+  text-align: center;
+  animation: animate 10s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+      filter: hue-rotate(0deg);
+  }
+  100% {
+      filter: hue-rotate(360deg);
+  }
+}
+
+#rainbow-text {
+  color: #ad26ad;
+  text-decoration: underline;
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.how-to-list {
+  text-align: left;
+}
