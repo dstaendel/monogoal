@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   # If not authenticated, route to the home page
   root to: 'pages#home'
 
+  get 'goals', to: 'pages#dashboard'
+
   get 'goals/edit_date/:id', to: 'goals#edit_date', as: "edit_date"
 
   devise_for :users
@@ -18,6 +20,8 @@ Rails.application.routes.draw do
   resources :goals, except: %i[index destroy] do
     resources :tasks, except: %i[show new]
   end
+
+  get '/archive', to: 'goals#archive'
 
   get '/pomodoro', to: 'pages#pomodoro'
 end

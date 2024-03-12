@@ -13,6 +13,6 @@ class PagesController < ApplicationController
   end
 
   def pomodoro
-    
+
   end
 end
