@@ -6,6 +6,11 @@
       </div>
     </div>
 
+    <%# Pomodoro Timer %>
+    <div data-controller="pomodoro" class="pomodoro-timer-sm">
+      <div data-pomodoro-target="display">25:00</div>
+    </div>
+
     <div class="container-center">
       <div class="progress-message">
         <% if @quote %>
@@ -34,7 +39,6 @@
     </div>
   <% end %>
 </div>
-
 
 
     <div class="container">
