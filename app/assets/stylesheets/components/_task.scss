@@ -21,7 +21,7 @@
   background-color: #ffffff;
   padding: 10px;
   margin-bottom: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(107, 107, 107, 0.2);
 }
 
@@ -46,6 +46,11 @@
 .task-title {
   flex-grow: 1;
   text-decoration: none;
+}
+
+.task-title a {
+  font-weight: 2rem;
+
 }
 
 .task-info {
