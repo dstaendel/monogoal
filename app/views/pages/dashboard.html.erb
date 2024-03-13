@@ -57,10 +57,21 @@
                     <% end %>
                 </form>
 
+
               </div>
             <% end %>
         </div>
 
+    <div class="container">
+      <%= image_tag(image_progress(@goal.progress)) %>
+    </div>
+
+  <% unless @goal.end_time.nil? %>
+    <div class="days-remaining">
+    <p><%= date_messages(@goal.remaining_days)%></p>
+    </div>
+  <% else %>
+  <% end %>
 
         <div class="container">
           <%= image_tag(@goal.image_progress) %>
@@ -78,6 +89,7 @@
     <div class="container-bottom">
       <%= render "shared/navbar_bottom" %>
     </div>
+</div>
 
     <% else %>
       <%= link_to new_goal_path do %>

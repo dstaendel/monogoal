@@ -1,0 +1,46 @@
+
+.btn-square-green {
+  width: 40px;  /* Size of the square */
+  height: 40px;  /* Size of the square */
+  padding: 0;  /* Remove padding to ensure the button remains square regardless of content */
+  display: flex;  /* Flexbox to center the content */
+  justify-content: center;  /* Center horizontally */
+  align-items: center;  /* Center vertically */
+  font-size: 0px;  /* Adjust checkmark size */
+  border-color: none;
+  border-radius: 5px;
+  background-image: url("check.png");
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+}
+
+.btn-square-green:hover {
+  background-image: url("");
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+}
+
+.btn-square-grey {
+  width: 40px;  /* Size of the square */
+  height: 40px;  /* Size of the square */
+  padding: 0;  /* Remove padding to ensure the button remains square regardless of content */
+  display: flex;  /* Flexbox to center the content */
+  justify-content: center;  /* Center horizontally */
+  align-items: center;  /* Center vertically */
+  font-size: 0px;  /* Adjust checkmark size */
+  border-color: none;
+  border-radius: 5px;
+  background-image: url("");
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+}
+
+.btn-square-grey:hover {
+  background-image: url("check.png");
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+}

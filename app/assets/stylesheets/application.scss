@@ -34,16 +34,27 @@
 @import "components/pomodoro-front";
 @import "components/archive";
 @import "components/confetti";
-
-
-
-
-
+@import "components/toggler/buttons";
 
 body {
   background-color: #AFDAEE; /* This sets the background color to white */
   height: 100vh;
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  color: rgb(0, 60, 144);
+  font-size: large;
 }
+
+h1, h2, h3, h4 {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  color: #001a66;
+  font-size: auto;
+}
+
 
 p {
   margin-bottom: 0;
@@ -52,50 +63,4 @@ p {
 .task-item a {
   text-decoration: none;
   color: #828282;
-}
-
-.btn-square-green {
-  width: 40px;  /* Size of the square */
-  height: 40px;  /* Size of the square */
-  padding: 0;  /* Remove padding to ensure the button remains square regardless of content */
-  display: flex;  /* Flexbox to center the content */
-  justify-content: center;  /* Center horizontally */
-  align-items: center;  /* Center vertically */
-  font-size: 0px;  /* Adjust checkmark size */
-  border-color: none;
-  border-radius: 5px;
-  background-image: url("check.png");
-  background-size: cover; /* Cover the entire area */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-}
-
-.btn-square-green:hover {
-  background-image: url("");
-  background-size: cover; /* Cover the entire area */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-}
-
-.btn-square-grey {
-  width: 40px;  /* Size of the square */
-  height: 40px;  /* Size of the square */
-  padding: 0;  /* Remove padding to ensure the button remains square regardless of content */
-  display: flex;  /* Flexbox to center the content */
-  justify-content: center;  /* Center horizontally */
-  align-items: center;  /* Center vertically */
-  font-size: 0px;  /* Adjust checkmark size */
-  border-color: none;
-  border-radius: 5px;
-  background-image: url("");
-  background-size: cover; /* Cover the entire area */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-}
-
-.btn-square-grey:hover {
-  background-image: url("check.png");
-  background-size: cover; /* Cover the entire area */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Do not repeat the image */
 }
