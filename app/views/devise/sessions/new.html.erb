@@ -1,7 +1,12 @@
-<div class="container mt-4">
-  <h2>Log in</h2>
+<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
 
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <h3 class="mb-5">Log In</h3>
+<div style="text-align: left">
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
       <%= f.input :email,
                   required: false,
@@ -12,11 +17,20 @@
                   input_html: { autocomplete: "current-password" } %>
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
     </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
-    </div>
+  </div>
+    <button class="form-actions">
+      <%= f.button :submit, "Confirm" %>
+    </button>
+      </div>
   <% end %>
-
+<div style="padding-left: 20px; margin-top: 20px">
   <%= render "devise/shared/links" %>
 </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
