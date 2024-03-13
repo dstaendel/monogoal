@@ -114,34 +114,34 @@ goal8.save
 puts "Creating Jerome's Tasks"
 
 task01 = Task.new(title: "Research Coding Bootcamps")
-task01.goal_id = 8
+task01.goal = goal8
 task01.save
 task02 = Task.new(title: "Get Approval from Arbeitsagentur")
-task02.goal_id = 8
+task02.goal = goal8
 task02.save
 task03 = Task.new(title: "Week 1: Programming Basics")
-task03.goal_id = 8
+task03.goal = goal8
 task03.save
 task04 = Task.new(title: "Week 2: Object Oriented Programming")
-task04.goal_id = 8
+task04.goal = goal8
 task04.save
 task05 = Task.new(title: "Week 3: Databases")
-task05.goal_id = 8
+task05.goal = goal8
 task05.save
 task06 = Task.new(title: "Week 4 and 5: HTML & CSS")
-task06.goal_id = 8
+task06.goal = goal8
 task06.save
 task07 = Task.new(title: "Week 7: First Group Project")
-task07.goal_id = 8
+task07.goal = goal8
 task07.save
 task08 = Task.new(title: "Week 8 and 9: Mono-Goal Project")
-task08.goal_id = 8
+task08.goal = goal8
 task08.save
 task09 = Task.new(title: "Demo Day")
-task09.goal_id = 8
+task09.goal = goal8
 task09.save
 task10 = Task.new(title: "Celebrate")
-task10.goal_id = 8
+task10.goal = goal8
 task10.save
 
 puts "Creating Ben's Tasks "
