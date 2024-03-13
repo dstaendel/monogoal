@@ -30,7 +30,7 @@ goal2 = Goal.new(
   title: "Learn to Code",
   description: "Learning to code in more languages",
   start_time: "Fri, 15 Jan 2024",
-  end_time: "Fri, 22 Mar 2024",
+  end_time: "Fri, 15 Mar 2024",
   active: true,
   emoji: "🖥",
   progress: 20
@@ -44,7 +44,7 @@ goal3 = Goal.new(
   title: "Learn to code",
   description: "Learning to code and getting my fullstack dev license at Le Wagon so I can start my new job in IT.",
   start_time: "Fri, 15 Jan 2024",
-  end_time: "Fri, 22 Mar 2024",
+  end_time: "Fri, 15 Mar 2024",
   emoji: "🖥",
   progress: ""
   )
@@ -55,7 +55,7 @@ goal4 = Goal.new(
   title: "Learn to speak German",
   description: "Learning to speak German, so I can finally understand the stupid puns",
   start_time: "Fri, 15 Jan 2024",
-  end_time: "Fri, 22 Mar 2024",
+  end_time: "Fri, 15 Mar 2024",
   active: true,
   emoji: "🇩🇪",
   progress: ""
@@ -80,7 +80,7 @@ goal6 = Goal.new(
   description: "Learning to code and getting my fullstack dev license at Le Wagon so I can start my new job in IT.",
   start_time: "Fri, 15 Jan 2024",
   active: true,
-  end_time: "Fri, 22 Mar 2024",
+  end_time: "Fri, 15 Mar 2024",
   emoji: "🖥", progress: ""
   )
 goal6.user = dominic
@@ -103,7 +103,7 @@ goal8 = Goal.new(
   title: "Learn to Code",
   description: "Learning to code and getting my fullstack dev license at Le Wagon so I can start my new job in IT.",
   start_time: "Fri, 15 Jan 2024",
-  end_time: "Fri, 22 Mar 2024",
+  end_time: "Fri, 15 Mar 2024",
   active: true,
   emoji: "🖥",
   progress: 0
