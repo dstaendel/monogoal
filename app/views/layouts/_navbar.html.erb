@@ -4,24 +4,18 @@
       <p class="navbar-brand"><%= time_based_greeting %> <%= current_user ? current_user.name : "Visitor" %>! <%= time_based_emoji %></p>
     <% end %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon" style="color: #ffffff;"></span>
       </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <%= link_to "Tasks", goals_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Archive", archive_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown">
-          <%= link_to "Profile", edit_user_registration_path, class: "nav-link" %>
-        </li>
+
           <li class="nav-item">
             <% if user_signed_in? %>
-              <li><%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete }, class: "dropdown-item" %></li>
+              <li><%= link_to "Log Out 🔒 ", destroy_user_session_path, data: {turbo_method: :delete }, class: "dropdown-item" %></li>
+              <li><%= link_to "Profile 👤 ", edit_user_registration_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Archive 🗒️ ", archive_path, class: "dropdown-item" %></li>
             <% else %>
-              <li><%= link_to "Log in", new_user_session_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Log In 🔓 ", new_user_session_path, class: "dropdown-item" %></li>
             <% end %>
         </li>
       </ul>

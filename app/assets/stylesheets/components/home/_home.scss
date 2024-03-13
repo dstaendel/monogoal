@@ -1,7 +1,8 @@
 .container-home {
-  margin: 50px 50px 50px 50px;
+  margin: 0vh 1vw 1vh 1vw;
+  padding: 0vh 1vw 1vh 1vw;
   text-align: center;
-  animation: animate 10s linear infinite;
+  animation: animate 30s linear infinite;
 }
 
 @keyframes animate {
@@ -15,7 +16,6 @@
 
 #rainbow-text {
   color: #ad26ad;
-  text-decoration: underline;
   background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
   color: transparent;
   background-clip: text;
@@ -23,5 +23,28 @@
 }
 
 .how-to-list {
-  text-align: left;
+  text-align: center;
+  margin-left: 25vw;
+  margin-right: 25vw;
+}
+
+#home-list {
+  text-align: center;
+}
+
+.home-button-container {
+  width:100%;
+  text-align: center;
+  margin: 0vh 1vw 4vh 1vw;
+
+}
+
+#home-button-1{
+  display: inline-block;
+  background-color: #deb3e6;
+}
+
+#home-button-2 {
+  display: inline-block;
+  background-color: #7bdbc8;
 }
