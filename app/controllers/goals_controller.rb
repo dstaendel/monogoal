@@ -11,10 +11,14 @@ class GoalsController < ApplicationController
   def create
     @goal = Goal.new(goal_params)
     @goal.user = current_user
-    @goal.active = true
+
+    unless current_user.goals.exists?(active: true)
+      @goal.active = true
+      redirect_to root_path, notice: "Your goal was successfully created."
+    end
 
     if @goal.save
-      redirect_to root_path, notice: "Your goal was successfully created."
+      redirect_to archive_path, notice: "Your goal was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
