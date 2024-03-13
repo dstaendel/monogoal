@@ -5,6 +5,22 @@
   border-radius: 30px;
   margin-bottom: 20px;
   padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+}
+
+.date-update-input{
+
+
+}
+
+.update-button-container {
+  display: flex;
+  justify-content: center;
+  flex-grow: 0;
 }
 
 .date-update-btn {
@@ -15,5 +31,6 @@
   padding: 10px;
   margin: 10px;
   font-size: medium;
-  margin-left: 120px;
+  flex-grow: 0;
+
 }
