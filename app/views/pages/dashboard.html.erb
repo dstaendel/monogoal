@@ -1,23 +1,23 @@
-<%# <div class="confetti">
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-  <div class="confetti-piece"></div>
-</div> %>
-
-
 <% unless @goal.nil? %>
-  <div class="container-main">
+  <div class="container-main" data-controller="toggle">
+
+      <div class="confetti d-none" data-toggle-target="confetti">
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+      </div>
+
       <div class="container-top">
         <div class="goal-title">
           <h2><%= @goal.title %> <%= @goal.emoji %></h2>
@@ -41,21 +41,24 @@
           <% end %>
         </div>
 
-        <div class="scroll-container" data-controller="toggle">
-          <% @tasks.each do |task| %>
-            <div class="task-item-dashboard" data-pagination-target="taskItem" data-task-id="<%= task.id %>">
-              <%= task.title %>
-              <form action="/goals/<%= @goal.id %>/tasks/<%= task.id %>" method="post" class="update-task-form" data-action="submit->toggle#submitForm">
-                <input type="hidden" name="_method" value="patch">
-                <input type="hidden" name="task[done]" value="check">
-                  <% if task.done %>
-                <input type="submit" class="btn btn-success btn-square-green">
-                  <% else %>
-                <input type="submit" class="btn btn-secondary btn-square-grey">
-                        <% end %>
-              </form>
-            </div>
-          <% end %>
+        <div class="scroll-container">
+            <% @tasks.each do |task| %>
+              <div data-toggle-target="task" data-pagination-target="taskItem" data-task-id="<%= task.id %>">
+                <%= task.title %>
+                <form
+                action="/goals/<%= @goal.id %>/tasks/<%= task.id %>"
+                method="post" class="update-task-form">
+                  <input type="hidden" name="_method" value="patch">
+                  <input type="hidden" name="task[done]" value="check">
+                    <% if task.done %>
+                      <input data-toggle-target="input" checked data-action="input->toggle#submitForm" type="checkbox" class="btn btn-success btn-square-green inputSuccess">
+                    <% else %>
+                      <input data-toggle-target="input" data-action="input->toggle#submitForm" type="checkbox" class="btn btn-secondary btn-square-grey inputUndone">
+                    <% end %>
+                </form>
+
+              </div>
+            <% end %>
         </div>
 
 

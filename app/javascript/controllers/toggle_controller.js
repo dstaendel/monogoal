@@ -1,12 +1,26 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["form"]
+  static targets = ["form", "confetti", "task", "input"]
 
-  submitForm(e) {
-    e.preventDefault()
-    const form = e.target
+  submitForm(event) {
+    event.preventDefault()
+
+    if (event.currentTarget.classList.contains("inputSuccess")) {
+      event.currentTarget.classList.remove("inputSuccess")
+      event.currentTarget.classList.add("inputUndone")
+    } else {
+      event.currentTarget.classList.remove("inputUndone")
+      event.currentTarget.classList.add("inputSuccess")
+    }
+
+    const form = event.currentTarget.parentElement
     const action = form.action
+
+    // event.currentTarget.value =
+
+
+    this.checkTaskCompletion();
 
     fetch(action, {
       method: 'POST',
@@ -19,10 +33,33 @@ export default class extends Controller {
     .then(response => {
       if (response.ok) {
         console.log('Task updated successfully');
-      } else {
-        throw new Error('Failed to update task');
       }
     })
-  window.location.reload();
+  }
+
+  checkTaskCompletion() {
+    let statement = null
+    this.inputTargets.forEach((input) => {
+      if (input.classList.contains("inputUndone")) {
+        statement = false
+        return
+      } else if (input.classList.contains("inputSuccess")){
+        statement = true
+      }
+    })
+
+    console.log(statement);
+
+    if (statement) {
+      this.startConfetti()
+    }
+  }
+
+  startConfetti() {
+    console.log("🎉🎉🎉🎉🎉🎉");
+    this.confettiTarget.classList.remove("d-none")
+    setTimeout(() => {
+      this.confettiTarget.classList.add("d-none")
+    }, 10000);
   }
 }
