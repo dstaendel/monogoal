@@ -1,14 +1,21 @@
-<div class="tasks-container-main">
+<div class="container-main">
+    <div class="container-top">
+ <div class="goal-title">
+        <h2><%= @goal.title %> <%= @goal.emoji %></h2>
+      </div>
+      </div>
   <div>
     <%= render "form", task: @task %>
   </div>
+
+
 
   <div class="tasks-container">
     <ul>
       <% @tasks.each do |task| %>
         <li class="task-item">
           <div class="task-title"><%= link_to task.title, edit_goal_task_path(@goal, task) %></div>
-          <%# <%= task.done %> 
+          <%# <%= task.done %>
             <form action="/goals/<%= @goal.id %>/tasks/<%= task.id %>" method="post" class="update-task-form" data-action="submit->toggle#submitForm">
               <input type="hidden" name="_method" value="patch">
               <input type="hidden" name="task[done]" value="check">
