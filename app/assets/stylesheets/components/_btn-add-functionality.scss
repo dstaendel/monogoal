@@ -10,7 +10,7 @@
   padding: 0;
   cursor: pointer;
   border-radius: 50%;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,10 +30,23 @@
   position: relative;
   margin: 11px;
   margin-bottom: 5px;
-  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.pomodoro-button:hover {
+  transform: scale(1.1);
+  background-color: #3498db;
+  color: white;
+}
+
+.pomodoro-button::before {
+  color: white;
+  text-shadow: 0 0 5px rgba(181, 181, 181, 0.3);
+  font-weight: 700;
+  font-size: 6rem;
 }
 
 .pomodoro-button i {
@@ -41,25 +54,53 @@
 }
 
 .button-add-functionality:hover {
-  transform: scale(1.1); /* Button beim Hover vergrößern */
-  background-color: #3498db; /* Blauer Hintergrund */
+  transform: scale(1.1);
+  background-color: #3498db;
   color: white;
 }
 
 .button-add-functionality::before {
   content: '+';
   color: white;
-  text-shadow: 0 0 20px rgba(181, 181, 181, 0.3);
+  text-shadow: 0 0 5px rgba(181, 181, 181, 0.3);
+  font-weight: 700;
+  font-size: 6rem;
+}
+
+.button-toggler {
+  background-color: #c059d5;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  transition: transform 0.5s ease-in-out;
+  margin-bottom: 45px;
+}
+
+.button-toggler:hover {
+  background-color: #6f0d83;
+  color: white;
+}
+
+.button-toggler::before {
+  color: white;
+  text-shadow: 0 0 5px rgba(181, 181, 181, 0.3);
   font-weight: 700;
   font-size: 6rem;
 }
 
 
-
 .dropup .dropdown-menu {
-  left: 50%; /* Start the menu in the center of the button */
-  transform: translateX(-50%); /* Move it back by half of its own width to center it */
-  bottom: 100%; /* Adjust this value as needed to position the menu right above the button */
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 100%;
 }
 
 #clock {

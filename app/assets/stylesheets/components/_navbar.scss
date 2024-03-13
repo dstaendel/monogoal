@@ -69,9 +69,18 @@
 
 .button-left {
   text-decoration: none;
+  background-image: url("calendar.png");
+  background-size: 70%; /* Cover the entire area */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+
 
 }
 .button-right {
   text-decoration: none;
+  background-image: url("list.png");
+  background-size: 50%; /* Cover the entire area */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the image */
 
 }
