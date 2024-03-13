@@ -1,10 +1,5 @@
 class GoalsController < ApplicationController
 
-  # TODO: BEN > ADD INDEX ACTION
-  def index
-
-  end
-
   def show
     @goal = Goal.find(params[:id])
   end
@@ -50,8 +45,6 @@ class GoalsController < ApplicationController
   private
 
   def goal_params
-    params.require(:goal).permit(:title, :description, :active, :start_time, :end_time, :emoji, :progress)
-    # params.require(:goal).permit(:title, :description, :active, :start_time, :end_time, :emoji, :progress)
+    params.require(:goal).permit(:title, :description, :active, :start_time, :end_time, :emoji)
   end
-
 end

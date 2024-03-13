@@ -1,8 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
-  def home
-  end
+  def home; end
 
   def dashboard
     @goal = Goal.where(active: true, user_id: current_user).first
@@ -13,7 +12,9 @@ class PagesController < ApplicationController
     end
   end
 
-  def pomodoro
+  def pomodoro; end
 
+  def archive
+    @goals = Goal.where(active: false, user_id: current_user)
   end
 end

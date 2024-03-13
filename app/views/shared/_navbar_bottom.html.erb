@@ -1,6 +1,8 @@
 <div class="navbar-bottom">
   <div class="pomodoro">
-    <button class="pomodoro-button" id="book"><i class="fas fa-book"></i></button>
+    <%= link_to archive_path, class: "pomodoro-button", id: "book"  do %>
+      <i class="fas fa-book"></i>
+    <% end %>
     <div class="dropup nav-circle">
       <button class="button-add-functionality mx-5" data-bs-toggle="dropdown" aria-expanded="false"></button>
         <div class="dropdown-menu">
