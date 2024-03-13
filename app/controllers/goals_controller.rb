@@ -1,9 +1,5 @@
 class GoalsController < ApplicationController
 
-  def archive
-    @goals = Goal.where(active: false, user_id: current_user)
-  end
-
   def show
     @goal = Goal.find(params[:id])
   end
@@ -49,6 +45,6 @@ class GoalsController < ApplicationController
   private
 
   def goal_params
-    params.require(:goal).permit(:title, :description, :active, :start_time, :end_time, :emoji, :progress)
+    params.require(:goal).permit(:title, :description, :active, :start_time, :end_time, :emoji)
   end
 end
