@@ -42,12 +42,12 @@
 
 
     <div class="container">
-      <%= image_tag(@goal.image_progress) %>
+      <%= image_tag(image_progress(@goal.progress)) %>
     </div>
 
   <% unless @goal.end_time.nil? %>
     <div class="days-remaining">
-      <p><%= (@goal.end_time - DateTime.now).to_i / (60 * 60 * 24)%> days</p>
+    <p><%= date_messages(@goal.remaining_days)%></p>
     </div>
   <% else %>
   <% end %>
