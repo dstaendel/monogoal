@@ -1,67 +1,86 @@
+<%# <div class="confetti">
+  <div class="confetti-piece"></div>
+  <div class="confetti-piece"></div>
+  <div class="confetti-piece"></div>
+  <div class="confetti-piece"></div>
+  <div class="confetti-piece"></div>
+  <div class="confetti-piece"></div>
+  <div class="confetti-piece"></div>
+  <div class="confetti-piece"></div>
+  <div class="confetti-piece"></div>
+  <div class="confetti-piece"></div>
+  <div class="confetti-piece"></div>
+  <div class="confetti-piece"></div>
+  <div class="confetti-piece"></div>
+  <div class="confetti-piece"></div>
+</div> %>
+
+
 <% unless @goal.nil? %>
   <div class="container-main">
-    <div class="container-top">
-      <div class="goal-title">
-        <h2><%= @goal.title %> <%= @goal.emoji %></h2>
+      <div class="container-top">
+        <div class="goal-title">
+          <h2><%= @goal.title %> <%= @goal.emoji %></h2>
+        </div>
       </div>
-    </div>
 
-    <%# Pomodoro Timer %>
-    <div data-controller="pomodoro" class="pomodoro-timer-sm">
-      <div data-pomodoro-target="display">25:00</div>
-    </div>
+      <%# Pomodoro Timer %>
+      <div data-controller="pomodoro" class="pomodoro-timer-sm">
+        <div data-pomodoro-target="display">25:00</div>
+      </div>
 
-    <div class="container-center">
-      <div class="progress-message">
-        <% if @quote %>
-          <div class="quote">
-            <p><%= @quote["q"] %></p>
-            <p><strong>- <%= @quote["a"] %></strong></p>
+      <div class="container-center">
+        <div class="progress-message">
+          <% if @quote %>
+            <div class="quote">
+              <p><%= @quote["q"] %></p>
+              <p><strong>- <%= @quote["a"] %></strong></p>
+            </div>
+          <% else %>
+            <p>No quote found.</p>
+          <% end %>
+        </div>
+
+        <div class="scroll-container" data-controller="toggle">
+          <% @tasks.each do |task| %>
+            <div class="task-item-dashboard" data-pagination-target="taskItem" data-task-id="<%= task.id %>">
+              <%= task.title %>
+              <form action="/goals/<%= @goal.id %>/tasks/<%= task.id %>" method="post" class="update-task-form" data-action="submit->toggle#submitForm">
+                <input type="hidden" name="_method" value="patch">
+                <input type="hidden" name="task[done]" value="check">
+                  <% if task.done %>
+                <input type="submit" class="btn btn-success btn-square-green">
+                  <% else %>
+                <input type="submit" class="btn btn-secondary btn-square-grey">
+                        <% end %>
+              </form>
+            </div>
+          <% end %>
+        </div>
+
+
+        <div class="container">
+          <%= image_tag(@goal.image_progress) %>
+        </div>
+
+        <% unless @goal.end_time.nil? %>
+          <div class="days-remaining">
+            <p><%= (@goal.end_time - DateTime.now).to_i / (60 * 60 * 24)%> days</p>
           </div>
         <% else %>
-          <p>No quote found.</p>
         <% end %>
       </div>
 
-  <div class="scroll-container" data-controller="toggle">
-  <% @tasks.each do |task| %>
-    <div class="task-item-dashboard" data-pagination-target="taskItem" data-task-id="<%= task.id %>">
-      <%= task.title %>
-      <form action="/goals/<%= @goal.id %>/tasks/<%= task.id %>" method="post" class="update-task-form" data-action="submit->toggle#submitForm">
-        <input type="hidden" name="_method" value="patch">
-        <input type="hidden" name="task[done]" value="check">
-          <% if task.done %>
-        <input type="submit" class="btn btn-success btn-square-green">
-          <% else %>
-        <input type="submit" class="btn btn-secondary btn-square-grey">
-                <% end %>
-      </form>
-    </div>
-  <% end %>
-</div>
-
-
-    <div class="container">
-      <%= image_tag(@goal.image_progress) %>
-    </div>
-
-  <% unless @goal.end_time.nil? %>
-    <div class="days-remaining">
-      <p><%= (@goal.end_time - DateTime.now).to_i / (60 * 60 * 24)%> days</p>
-    </div>
-  <% else %>
-  <% end %>
-
-</div>
 
     <div class="container-bottom">
       <%= render "shared/navbar_bottom" %>
     </div>
 
-<% else %>
-  <%= link_to new_goal_path do %>
-    <div>
-      <h1>Create your first goal!</h1>
-    </div>
-  <% end %>
-<% end %>
+    <% else %>
+      <%= link_to new_goal_path do %>
+        <div>
+          <h1>Create your first goal!</h1>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
