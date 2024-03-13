@@ -20,17 +20,16 @@ module GoalHelper
   end
 
   def date_messages(remaining_days)
-    case remaining_days
-    when 0
+    if remaining_days.zero?
       "Today is the day."
-    when 1
+    elsif remaining_days == 1
       "One day 'til goal completion."
-    when 2..365
+    elsif remaining_days >= 2 && remaining_days <= 365
       "Remaining days: #{@goal.remaining_days}"
-    # when >= 366
-    #   "Over a year to go ..."
-    # when negative?
-    #  "Your set date is in the past ..."
+    elsif remaining_days >= 365
+      "Over a year to go ..."
+    elsif remaining_days.negative?
+      "Your set date is in the past ..."
     else
       "Something went wrong ..."
     end
