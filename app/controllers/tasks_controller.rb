@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[edit update destroy]
 
   def index
-    @tasks = Task.order("created_at ASC")
+    @tasks = Task.order("done ASC, created_at ASC")
     @task = Task.new
   end
 
@@ -13,7 +13,6 @@ class TasksController < ApplicationController
 
     @task.percentage = calculate_task_percentage
     @task.save!
-
     update_goal_progress
     redirect_to goal_tasks_path
   end

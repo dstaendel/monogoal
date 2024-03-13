@@ -1,27 +1,29 @@
 
 <div class="container-home">
-<h1>Welcome to</h1>
-<h1 id="rainbow-text"><b>Mono-Goal</b></h1>
-<br>
+  <h1>Welcome to</h1>
+  <h1 id="rainbow-text"><b>Mono-Goal</b></h1>
+  <br>
 
-<div>
-  <%= image_tag("tree_home.svg", width: "200", height: "200", alt: "test") %>
-</div>
-<br>
-
-<p>Mono-Goal let's you focus one the most important without distractions.</p>
-<br>
-<p><em>One goal at a time ...</em></p>
-<br>
-<p><u><b>How to:</b></u></p>
-<ol class="how-to-list">
-  <li>Set your goal</li>
-  <li>Set your timeline</li>
-  <li>Set your subtasks</li>
-  <li>Add a pomodoro timer</li>
-</ol>
-<br>
-
-<button><em>Start timer</em></button>
-
+  <div>
+    <%= image_tag("tree_home.svg", width: "200", height: "200", alt: "test") %>
+  </div>
+  <br>
+  <p>Mono-Goal let's you focus on the most important without distractions.</p>
+  <br>
+  <p><em>One goal at a time ...</em></p>
+  <br>
+  <p><u><b>How to:</b></u></p>
+  <div class="how-to-list">
+    <p>1. Sign Up and Log in</p>
+    <p>2. Set your goal</p>
+    <p>3. Set your timeline</p>
+    <p>4. Set your tasks</p>
+  </div>
+  <br>
+  <div>
+    <button><% link_to new_goal_path %><em>Start your journey now</em></button>
+  </div>
+  <div>
+    <button><% link_to pomodoro_path %><em>Start pomodoro timer</em></button>
+  </div>
 </div>

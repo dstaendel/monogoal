@@ -8,6 +8,8 @@
     <meta name="apple-mobile-web-app-title" content="Mono Goal">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="csrf-token" content="<%= form_authenticity_token %>">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 

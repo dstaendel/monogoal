@@ -5,6 +5,7 @@
       <div>
         <div data-pomodoro-target="display" id="timer" class="d-flex justify-content-center" style="font-size: 20px;">
           <!-- Change value (25:00) in pomodoro_controller.js -->
+          <div data-pomodoro-target="display">25:00</div>
         </div>
         <div class="buttons-pomodoro d-flex justify-content-center">
           <%= link_to "<i class='fas fa-play'></i>".html_safe, "#", data: { action: "click->pomodoro#start"}, class: "btn", id: "start" %>

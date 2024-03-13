@@ -1,5 +1,6 @@
 .timer-container-main {
-  background: white;
+  background-image: asset-url("pomodoro.jpeg");
+  background-size: cover;
   width: 100%;
   min-height: 100vh;
   border-radius: 30px;
@@ -51,6 +52,14 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   padding: 20px;
   margin-top: 25px;
+
+  // test
+
+  // border-radius: 30px;
+  // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  // padding: 20px;
+  // margin-top: 25px;
+  // backdrop-filter: blur(10px);
 }
 
 .timer-container {
@@ -64,4 +73,17 @@
   display: flex;
   justify-content: center;
   color: #4eadd9;
+}
+
+.pomodoro-timer-sm {
+  border-radius: 10%;
+  border: 7px solid #afdaee;
+  height: 60px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto Flex';
+  font-size: 2rem;
+
 }

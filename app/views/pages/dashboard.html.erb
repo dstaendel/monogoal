@@ -6,6 +6,11 @@
       </div>
     </div>
 
+    <%# Pomodoro Timer %>
+    <div data-controller="pomodoro" class="pomodoro-timer-sm">
+      <div data-pomodoro-target="display">25:00</div>
+    </div>
+
     <div class="container-center">
       <div class="progress-message">
         <% if @quote %>
@@ -18,35 +23,41 @@
         <% end %>
       </div>
 
-      <div class="scroll-container">
-        <% # Assuming you're iterating through tasks here %>
-        <% @tasks.each do |task| %>
-          <div class="task-item-dashboard" data-pagination-target="taskItem">
-            <%= task.title %>
-          </div>
-          <% end %>
-      </div>
+  <div class="scroll-container" data-controller="toggle">
+  <% @tasks.each do |task| %>
+    <div class="task-item-dashboard" data-pagination-target="taskItem" data-task-id="<%= task.id %>">
+      <%= task.title %>
+      <form action="/goals/<%= @goal.id %>/tasks/<%= task.id %>" method="post" class="update-task-form" data-action="submit->toggle#submitForm">
+        <input type="hidden" name="_method" value="patch">
+        <input type="hidden" name="task[done]" value="check">
+          <% if task.done %>
+        <input type="submit" class="btn btn-success btn-square-green">
+          <% else %>
+        <input type="submit" class="btn btn-secondary btn-square-grey">
+                <% end %>
+      </form>
+    </div>
+  <% end %>
+</div>
+
 
     <div class="container">
       <%= image_tag(@goal.image_progress) %>
+    </div>
 
+  <% unless @goal.end_time.nil? %>
     <div class="days-remaining">
       <p><%= (@goal.end_time - DateTime.now).to_i / (60 * 60 * 24)%> days</p>
     </div>
+  <% else %>
+  <% end %>
 
-    <div class="tasks-container">
-    <p><%= @goal.progress %>% reached</p>
-    </div>
 </div>
-
-      <div class="tasks-container">
-        <p><%= @goal.progress %>% reached</p>
-      </div>
-    </div>
 
     <div class="container-bottom">
       <%= render "shared/navbar_bottom" %>
     </div>
+
 <% else %>
   <%= link_to new_goal_path do %>
     <div>
