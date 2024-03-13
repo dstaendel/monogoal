@@ -1,20 +1,25 @@
 <div class="tasks-container-main-edit">
-
-  <div>
-    <%= render "edit-form", task: @task %>
-  </div>
-
-  <div class=task-info-container>
-    <div class="progress-container">
-      <div class="progress-word">Progress</div>
-      <div class="progress-porcentage"><%= @task.percentage %>%</div>
+  <div class="task-info-container">
+    <div class="task-edit-input">
+      <%= render "edit-form", task: @task %>
     </div>
+    <div class="task-notes">
+      <p>Notes</p>
+    </div>
+    <div class="delete-button-container">
     <%= button_to 'Delete Task', goal_task_path(@goal, @task), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: "task-edit-delete", form: {class: "inline-form"} %>
+    </div>
   </div>
+</div>
 
-  <div>
-    <%= link_to "⬅",  goal_tasks_path, class: "back-to-dashboard" %>
+<div class="navbar-bottom">
+  <div class="pomodoro">
+    <button class="pomodoro-button" id="book"><i class="fas fa-book"></i></button>
+    <div class="dropup nav-circle">
+
+      <%= link_to "", goal_tasks_path(goal_id: @goal.id), class: "button-back mx-5", role: "button" %>
+
+    </div>
+    <button class="pomodoro-button" id="clock"><i class="fas fa-clock"></i></button>
   </div>
-
-
 </div>

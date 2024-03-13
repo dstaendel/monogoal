@@ -9,6 +9,11 @@
   background-color: white;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
+  bottom: 0; /* Extend to the bottom of the parent */
+  left: 0; /* Align to the left */
+  right: 0; /* Align to the right */
+  height: 100vh; /* Example height, simulating a full page */
+  width: 100%;
 }
 
 .container-top {
@@ -116,6 +121,7 @@
   display: flex;
   justify-content: center; /* Zentriert den Inhalt horizontal */
   align-items: center; /* Zentriert den Inhalt vertikal */
+  text-decoration: none;
 
 }
 
