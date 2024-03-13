@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", function() {
     if (isButton) {
       console.log(isButton);
       console.log(navbarTop);
-      navbarTop.classList.remove("d-none");
+      navbarTop?.classList?.remove("d-none");
     } else {
-      navbarTop.classList.add("d-none");
+      navbarTop?.classList?.add("d-none");
     }
   });
 });
