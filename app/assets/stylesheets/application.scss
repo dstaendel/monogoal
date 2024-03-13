@@ -41,7 +41,22 @@
 body {
   background-color: #AFDAEE; /* This sets the background color to white */
   height: 100vh;
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  color: rgb(0, 60, 144);
+  font-size: large;
 }
+
+h1, h2, h3, h4 {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  color: #001a66;
+  font-size: auto;
+}
+
 
 p {
   margin-bottom: 0;

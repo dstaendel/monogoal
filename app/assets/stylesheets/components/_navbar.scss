@@ -4,8 +4,18 @@
   justify-content: flex-end!important;
 }
 
+.dropdown-item {
+  padding: 1.5vw;
+  text-align: right;
+  color: rgb(0, 60, 144);
+}
+
 .navbar {
   background-color: #AFDAEE;
+}
+
+.navbar-brand {
+  color: rgb(0, 60, 144);
 }
 
 .navbar-nav {
@@ -13,16 +23,13 @@
   justify-content: flex-end;
 }
 
-.navbar-brand {
-  color: white;
-}
 .navbar-toggler {
   border: transparent;
   color: transparent;
 }
 
 .navbar-toggler-icon {
-  color: white;
+  color: rgb(0, 60, 144) !important;
 }
 
 .navbar-bottom {
