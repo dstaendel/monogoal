@@ -16,6 +16,7 @@ class PagesController < ApplicationController
 
   def archive
     @goals = Goal.where(active: false, user_id: current_user)
-    @goal =  Goal.new
+    @goal_new = Goal.new
+    @goal = Goal.where(active: true, user_id: current_user)
   end
 end

@@ -2,7 +2,7 @@
   <!-- Add New Goals -->
   <div class="new-goal-container">
     <h2>➕ Add New Goal</h2>
-    <%= simple_form_for @goal do |f| %>
+    <%= simple_form_for @goal_new do |f| %>
       <%= f.input :title, label: false %>
       <%= f.button :submit, class: "btn btn" %>
     <% end %>
@@ -21,15 +21,8 @@
   </div>
 
   <!-- Navbar Bottom -->
-  <div class="container-bottom">
-    <div class="navbar-bottom">
-      <div class="pomodoro">
-        <button class="pomodoro-button" id="book"><i class="fas fa-book"></i></button>
-        <div class="dropup nav-circle">
-          <%= link_to "", root_path, class: "button-back mx-5" %>
-        </div>
-        <button class="pomodoro-button" id="clock"><i class="fas fa-clock"></i></button>
-      </div>
+
+    <div class="container-bottom">
+      <%= render "shared/navbar_bottom_back" %>
     </div>
-  </div>
 </div>

@@ -3,8 +3,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[edit update destroy]
 
   def index
-    @tasks = Task.where(goal_id: @goal.id)
-                 .order("done ASC, created_at ASC")
+    @tasks = @goal.tasks.order("done ASC, created_at ASC")
     @task = Task.new
   end
 
@@ -44,7 +43,7 @@ class TasksController < ApplicationController
   end
 
   def set_task
-    @task = Task.find(params[:id])
+    @task = Task.find_by(params[:id])
   end
 
   def calculate_task_percentage

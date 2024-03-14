@@ -1,9 +1,5 @@
 class GoalsController < ApplicationController
 
-  def show
-    @goal = Goal.find(params[:id])
-  end
-
   def new
     @goal = Goal.new
   end
@@ -25,12 +21,12 @@ class GoalsController < ApplicationController
   end
 
   def edit_date
-    @goal = Goal.find(params[:id])
+    @goal = Goal.find_by(active: true, user_id: current_user)
   end
 
   def update
     if params[:active] == true
-      goals = Goal.where(active: true, user_id: current_user)
+      goals = Goal.find_by(active: true, user_id: current_user)
       goals.each do |goal|
         goal.active = false
         goal.save

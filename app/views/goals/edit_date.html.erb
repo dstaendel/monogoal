@@ -1,20 +1,28 @@
 <div class="container-main">
  <div class="container-top">
  <div class="goal-title">
-        <h2><%= @goal.title %> <%= @goal.emoji %></h2>
+
+ <% unless @goal.nil? %>
+  <h2><%= @goal.title %> <%= @goal.emoji %></h2>
+ <% end %>
+
       </div>
       </div>
-<div class="edit-date-container">
-  <%= simple_form_for(@goal, html: { class: "" }, data: { controller: "datepicker" }) do |f| %>
-    <%= f.input :start_time, label: "Set Your Dates, Track Your Journey!", class:"date-update-input", as: :string, input_html: { data: { datepicker_target: "date" } } %>
-    <div class="update-button-container">
-      <%= f.button :submit, "UPDATE", class:"date-update-btn" %>
+      <div class="edit-date-container">
+        <%= simple_form_for(@goal, html: { class: "" }, data: { controller: "datepicker" }) do |f| %>
+          <%= f.input :start_time, label: "Set Your Dates, Track Your Journey!", class:"date-update-input", as: :string, input_html: { data: { datepicker_target: "date" } } %>
+          <div class="update-button-container">
+            <%= f.button :submit, "UPDATE", class:"date-update-btn" %>
+          </div>
+        <% end %>
+      </div>
+
+
+   <div class="container-bottom">
+      <%= render "shared/navbar_bottom_back" %>
     </div>
-  <% end %>
-</div>
 
-
-<div class="container-bottom">
+<%# <div class="container-bottom">
   <div class="navbar-bottom">
     <div class="pomodoro">
       <button class="pomodoro-button" id="book"><i class="fas fa-book"></i></button>
@@ -27,4 +35,4 @@
     </div>
   </div>
 </div>
-</div>
+</div> %>

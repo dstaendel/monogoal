@@ -1,5 +1,5 @@
-<div class="container-main" data-controller="toggle pomodoro" 
-                            data-pomodoro-remaining-seconds-value="<%= params[:seconds] %>" 
+<div class="container-main" data-controller="toggle pomodoro"
+                            data-pomodoro-remaining-seconds-value="<%= params[:seconds] %>"
                             data-pomodoro-running-value="<%= params[:running] %>">
   <div class="timer-container-main">
     <div class="timer-card">
@@ -20,15 +20,21 @@
     </div>
   </div>
 
-  <div class="navbar-bottom">
+  <%# <div class="navbar-bottom">
     <div class="pomodoro">
       <button class="pomodoro-button" id="book"><i class="fas fa-book"></i></button>
       <div class="dropup nav-circle">
 
         <%= link_to "", root_path, class: "button-back mx-5", data: { action: "click->pomodoro#takeFive"} %>
 
-      </div>
-      <button class="pomodoro-button" id="clock"><i class="fas fa-clock"></i></button>
+      <%# </div> %>
+      <%# <button class="pomodoro-button" id="clock"><i class="fas fa-clock"></i></button> %>
+    <%# </div> %>
+  <%# </div> %> 
+
+
+   <div class="container-bottom">
+      <%= render "shared/navbar_bottom_back" %>
     </div>
-  </div>
+
 </div>

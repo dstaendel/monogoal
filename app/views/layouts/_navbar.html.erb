@@ -4,7 +4,8 @@
       <p class="navbar-brand"><%= time_based_greeting %> <%= current_user ? current_user.name : "Visitor" %>! <%= time_based_emoji %></p>
     <% end %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon" style="color: #ffffff;"></span>
+        <%# <span class="navbar-toggler-icon" style="color: rgb(0, 60, 144) !important;"></span> %>
+        <span><i class="fa-solid fa-caret-down" style="color: rgb(0, 60, 144) !important;"></i></span>
       </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ms-auto">
