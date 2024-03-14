@@ -1,23 +1,28 @@
 <div class="navbar-bottom">
   <div class="pomodoro">
-    <%= link_to archive_path, class: "pomodoro-button", id: "book"  do %>
+    <%= link_to archive_path, data: { action: "click->pomodoro#takeFive"}, class: "pomodoro-button", id: "book"  do %>
       <i class="fas fa-book"></i>
     <% end %>
     <div class="dropup nav-circle">
       <button class="button-add-functionality mx-5"></button>
     </div>
-    <%= link_to pomodoro_path, class: "pomodoro-button", id: "clock", 
+
+    <%= link_to pomodoro_path, class: "pomodoro-button", id: "clock",
     data: { action: "click->pomodoro#takeFive"} do %>
-      <i class="fas fa-clock"></i>
+        <% if params[:running] %>
+          <div class="dashboard-timer" data-pomodoro-target="display"></div>
+        <% else %>
+          <i class="fas fa-clock"></i>
+        <% end %>
     <% end %>
   </div>
 </div>
 
 <div class="navbar-top d-none">
   <div class="pomodoro">
-    <%= link_to edit_date_path(@goal), class: 'button-toggler mx-5 button-left' do %>
+    <%= link_to edit_date_path(@goal), data: { action: "click->pomodoro#takeFive"}, class: 'button-toggler mx-5 button-left' do %>
     <% end %>
-    <%= link_to goal_tasks_path(@goal), class: 'button-toggler mx-5 button-right' do %>
+    <%= link_to goal_tasks_path(@goal), data: { action: "click->pomodoro#takeFive"}, class: 'button-toggler mx-5 button-right' do %>
     <% end %>
   </div>
 </div>
