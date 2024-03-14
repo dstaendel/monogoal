@@ -1,37 +1,22 @@
 <div class="container-main">
- <div class="container-top">
- <div class="goal-title">
-        <h2><%= @goal.title %> <%= @goal.emoji %></h2>
-      </div>
-      </div>
-<div class="edit-date-container">
-  <%= simple_form_for(@goal, html: { class: "" }, data: { controller: "datepicker" }) do |f| %>
-    <%= f.input :start_time, label: "Set Your Dates, Track Your Journey!", class:"date-update-input", as: :string, input_html: { data: { datepicker_target: "date" } } %>
-    <div class="update-button-container">
-      <%= f.button :submit, "UPDATE", class:"date-update-btn" %>
-    </div>
-  <% end %>
-</div>
-
-
-<div class="container-bottom">
-  <div class="navbar-bottom">
-    <div class="pomodoro">
-      <button class="pomodoro-button" id="book"><i class="fas fa-book"></i></button>
-      <div class="dropup nav-circle">
-        <a href="/" class="button-back mx-5" role="button"></a>
-      </div>
-
-      <%= link_to pomodoro_path, class: "pomodoro-button", id: "clock",
-      data: { action: "click->pomodoro#takeFive"} do %>
-        <% if params[:running] %>
-          <div class="dashboard-timer" data-pomodoro-target="display"></div>
-        <% else %>
-          <i class="fas fa-clock"></i>
-        <% end %>
+  <div class="container-top">
+    <div class="goal-title">
+      <% unless @goal.nil? %>
+      <h2><%= @goal.title %> <%= @goal.emoji %></h2>
       <% end %>
-
     </div>
   </div>
-</div>
+
+  <div class="edit-date-container">
+    <%= simple_form_for(@goal, html: { class: "" }, data: { controller: "datepicker" }) do |f| %>
+      <%= f.input :start_time, label: "Set Your Dates, Track Your Journey!", class:"date-update-input", as: :string, input_html: { data: { datepicker_target: "date" } } %>
+        <div class="update-button-container">
+          <%= f.button :submit, "UPDATE", class:"date-update-btn" %>
+        </div>
+    <% end %>
+  </div>
+
+  <div class="container-bottom">
+    <%= render "shared/navbar_bottom_back" %>
+  </div>
 </div>

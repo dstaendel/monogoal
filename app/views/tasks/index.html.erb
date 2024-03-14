@@ -1,57 +1,40 @@
 <div class="container-main">
     <div class="container-top">
- <div class="goal-title">
+      <div class="goal-title">
         <h2><%= @goal.title %> <%= @goal.emoji %></h2>
       </div>
-      </div>
-  <div>
-    <%= render "form", task: @task %>
-  </div>
+    </div>
 
- <div class="container-center">
+    <div>
+      <%= render "form", task: @task %>
+    </div>
 
-  <div class="tasks-container">
-    <ul>
-      <% @tasks.each do |task| %>
-        <li class="task-item">
-          <div class="task-title"><%= link_to task.title, edit_goal_task_path(@goal, task), data: { action: "click->pomodoro#takeFive"} %></div>
-          <%# <%= task.done %>
-            <form action="/goals/<%= @goal.id %>/tasks/<%= task.id %>" method="post" class="update-task-form">
-              <input type="hidden" name="_method" value="patch">
-              <input type="hidden" name="task[done]" value="check">
+  <div class="container-center">
+    <div class="tasks-container">
+      <ul>
+        <% @tasks.each do |task| %>
+          <li class="task-item">
+            <div class="task-title"><%= link_to task.title, edit_goal_task_path(@goal, task), data: { action: "click->pomodoro#takeFive"} %></div>
+            <%# <%= task.done %>
+              <form action="/goals/<%= @goal.id %>/tasks/<%= task.id %>" method="post" class="update-task-form">
+                <input type="hidden" name="_method" value="patch">
+                <input type="hidden" name="task[done]" value="check">
 
-
-                <% if task.done %>
-                  <input data-toggle-target="input" checked data-action="input->toggle#submitForm" type="checkbox" class="btn btn-success btn-square-green inputSuccess">
-                <% else %>
-                  <input data-toggle-target="input" data-action="input->toggle#submitForm" type="checkbox" class="btn btn-secondary btn-square-grey inputUndone">
-                <% end %>
-            </form>
-          <div class="task-info">
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-
-</div>
-  <div class="container-bottom">
-    <div class="navbar-bottom">
-      <div class="pomodoro">
-        <button class="pomodoro-button" id="book"><i class="fas fa-book"></i></button>
-        <div class="dropup nav-circle">
-          <%= link_to "", root_path, data: { action: "click->pomodoro#takeFive"}, class: "button-back mx-5" %>
-        </div>
-        <%= link_to pomodoro_path, class: "pomodoro-button", id: "clock",
-        data: { action: "click->pomodoro#takeFive"} do %>
-            <% if params[:running] %>
-              <div class="dashboard-timer" data-pomodoro-target="display"></div>
-            <% else %>
-              <i class="fas fa-clock"></i>
-            <% end %>
+                  <% if task.done %>
+                    <input data-toggle-target="input" checked data-action="input->toggle#submitForm" type="checkbox" class="btn btn-success btn-square-green inputSuccess">
+                  <% else %>
+                    <input data-toggle-target="input" data-action="input->toggle#submitForm" type="checkbox" class="btn btn-secondary btn-square-grey inputUndone">
+                  <% end %>
+              </form>
+            <div class="task-info">
+            </div>
+          </li>
         <% end %>
-      </div>
+      </ul>
+    </div>
+
+    <div class="container-bottom">
+      <%= render "shared/navbar_bottom_back" %>
     </div>
   </div>
-
 </div>

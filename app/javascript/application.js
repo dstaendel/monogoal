@@ -4,6 +4,3 @@ import "controllers"
 import "@popperjs/core"
 import "bootstrap"
 import "@hotwired/stimulus"
-
-//= require navbar_button_toggler
-//= require alert_remover

@@ -3,8 +3,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[edit update destroy]
 
   def index
-    @tasks = Task.where(goal_id: @goal.id)
-                 .order("done ASC, created_at ASC")
+    @tasks = @goal.tasks.order("done ASC, created_at ASC")
     @task = Task.new
   end
 
@@ -65,8 +64,6 @@ class TasksController < ApplicationController
   end
 
   def mark_as_done
-    @task.update(task_params) unless params[:task][:done] == "check"
-
     if params[:task][:done] == "check"
       if @task.done == true
         @task.done = false
