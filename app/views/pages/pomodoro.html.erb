@@ -1,5 +1,5 @@
-<div class="container-main" data-controller="toggle pomodoro" 
-                            data-pomodoro-remaining-seconds-value="<%= params[:seconds] %>" 
+<div class="container-main" data-controller="toggle pomodoro"
+                            data-pomodoro-remaining-seconds-value="<%= params[:seconds] %>"
                             data-pomodoro-running-value="<%= params[:running] %>">
   <div class="timer-container-main">
     <div class="timer-card">
@@ -28,7 +28,13 @@
         <%= link_to "", root_path, class: "button-back mx-5", data: { action: "click->pomodoro#takeFive"} %>
 
       </div>
-      <button class="pomodoro-button" id="clock"><i class="fas fa-clock"></i></button>
+
+      <%= link_to pomodoro_path, class: "pomodoro-button", id: "clock",
+      data: { action: "click->pomodoro#takeFive"} do %>
+
+          <i class="fas fa-clock"></i>
+
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 <% unless @goal.nil? %>
   <div class="container-main"
-  data-controller="toggle pomodoro"
+  data-controller="toggle"
   data-pomodoro-remaining-seconds-value="<%= params[:seconds] %>"
   data-pomodoro-running-value="<%= params[:running] %>"
   data-toggle-progress-value="<%= @goal.progress %>"
@@ -28,13 +28,6 @@
           <h2><%= @goal.title %> <%= @goal.emoji %></h2>
         </div>
       </div>
-
-      <%# Pomodoro Timer %>
-      <% unless params[:seconds] == "1500" %>
-        <div class="something pomodoro-timer-sm">
-          <div data-pomodoro-target="display">25:00</div>
-        </div>
-      <% end %>
 
       <div class="container-center">
         <div class="progress-message">
@@ -86,7 +79,7 @@
 
      <%= render "shared/navbar_bottom" %>
     <% else %>
-      <%= link_to new_goal_path do %>
+      <%= link_to new_goal_path, data: { action: "click->pomodoro#takeFive"} do %>
         <div>
           <h1>Create your first goal!</h1>
         </div>
