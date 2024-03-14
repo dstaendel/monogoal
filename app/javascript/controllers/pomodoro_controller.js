@@ -26,13 +26,13 @@ export default class extends Controller {
   }
 
   stop(event) {
-    event.preventDefault()
+    event?.preventDefault()
     clearInterval(this.currentInterval);
     this.runningValue = false;
   }
 
   reset(event) {
-    event.preventDefault();
+    event?.preventDefault();
     clearInterval(this.currentInterval);
     this.remainingSecondsValue = (25 * 60);
     this.#updateDisplay(this.timeValue);
@@ -54,7 +54,9 @@ export default class extends Controller {
   }
 
   #updateDisplay() {
-    this.displayTarget.innerHTML = `<p>${this.#formatTime()}</p>`;
+    if (this.hasDisplayTarget) {
+      this.displayTarget.innerHTML = `<p>${this.#formatTime()}</p>`;
+    }
   }
 
   #formatTime() {
@@ -64,7 +66,8 @@ export default class extends Controller {
   }
 
   takeFive(event) {
-    event.preventDefault()
+    event?.preventDefault()
+    console.log("Take five action");
     const searchQuery = `seconds=${this.remainingSecondsValue}&running=${this.runningValue}`
     const url = `${event.currentTarget.href}?${searchQuery}`
     window.location.href = url;

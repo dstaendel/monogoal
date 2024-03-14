@@ -8,13 +8,14 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = Task.new
+    @task.title = params[:task][:title]
     @task.goal = @goal
 
     @task.percentage = calculate_task_percentage
     @task.save!
     update_goal_progress
-    redirect_to goal_tasks_path
+    redirect_to goal_tasks_path(seconds: params[:task][:seconds], running: params[:task][:running])
   end
 
   def edit
@@ -24,7 +25,9 @@ class TasksController < ApplicationController
     mark_as_done
     @task.save
     update_goal_progress
-    redirect_to goal_tasks_path(@task.goal.id)
+    render json: {
+      partial: render_to_string(partial: "goals/progress_image", locals: {goal: @task.goal})
+    }, status: :ok
   end
 
   def destroy

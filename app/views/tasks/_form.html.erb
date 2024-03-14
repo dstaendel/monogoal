@@ -1,4 +1,6 @@
 <%= simple_form_for([@goal, @task], html: { class: "new-task-container" }) do |f| %>
   <%= f.input :title, input_html: { class: 'task-input', placeholder: "Add a task" }, label: false, wrapper: false %>
+  <%= f.input :seconds, as: :hidden, input_html: { value: params[:seconds]} %>
+  <%= f.input :running, as: :hidden, input_html: { value: params[:running]} %>
   <%= f.button :submit, "+", class: "add-task-button" %>
 <% end %>

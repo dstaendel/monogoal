@@ -1,38 +1,40 @@
 <div class="container-main">
     <div class="container-top">
- <div class="goal-title">
+      <div class="goal-title">
         <h2><%= @goal.title %> <%= @goal.emoji %></h2>
       </div>
-      </div>
-  <div>
-    <%= render "form", task: @task %>
-  </div>
+    </div>
 
+    <div>
+      <%= render "form", task: @task %>
+    </div>
 
+  <div class="container-center">
+    <div class="tasks-container">
+      <ul>
+        <% @tasks.each do |task| %>
+          <li class="task-item">
+            <div class="task-title"><%= link_to task.title, edit_goal_task_path(@goal, task), data: { action: "click->pomodoro#takeFive"} %></div>
+            <%# <%= task.done %>
+              <form action="/goals/<%= @goal.id %>/tasks/<%= task.id %>" method="post" class="update-task-form">
+                <input type="hidden" name="_method" value="patch">
+                <input type="hidden" name="task[done]" value="check">
 
-  <div class="tasks-container">
-    <ul>
-      <% @tasks.each do |task| %>
-        <li class="task-item">
-          <div class="task-title"><%= link_to task.title, edit_goal_task_path(@goal, task) %></div>
-          <%# <%= task.done %>
-            <form action="/goals/<%= @goal.id %>/tasks/<%= task.id %>" method="post" class="update-task-form" data-action="submit->toggle#submitForm">
-              <input type="hidden" name="_method" value="patch">
-              <input type="hidden" name="task[done]" value="check">
-                <% if task.done %>
-              <input type="submit" class="btn btn-success btn-square-green">
-                <% else %>
-              <input type="submit" class="btn btn-secondary btn-square-grey">
+                  <% if task.done %>
+                    <input data-toggle-target="input" checked data-action="input->toggle#submitForm" type="checkbox" class="btn btn-success btn-square-green inputSuccess">
+                  <% else %>
+                    <input data-toggle-target="input" data-action="input->toggle#submitForm" type="checkbox" class="btn btn-secondary btn-square-grey inputUndone">
                   <% end %>
-            </form>
-          <div class="task-info">
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+              </form>
+            <div class="task-info">
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
 
-   <div class="container-bottom">
+    <div class="container-bottom">
       <%= render "shared/navbar_bottom_back" %>
     </div>
   </div>
+</div>
