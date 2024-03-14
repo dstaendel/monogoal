@@ -1,5 +1,8 @@
 <% unless @goal.nil? %>
-  <div class="container-main" data-controller="toggle">
+  <div class="container-main" 
+  data-controller="toggle pomodoro" 
+  data-pomodoro-remaining-seconds-value="<%= params[:seconds] %>" 
+  data-pomodoro-running-value="<%= params[:running] %>">
 
       <div class="confetti d-none" data-toggle-target="confetti">
         <div class="confetti-piece"></div>
@@ -25,9 +28,11 @@
       </div>
 
       <%# Pomodoro Timer %>
-      <div data-controller="pomodoro" class="pomodoro-timer-sm">
-        <div data-pomodoro-target="display">25:00</div>
-      </div>
+      <% unless params[:seconds] == "1500" %>
+        <div class="something pomodoro-timer-sm">
+          <div data-pomodoro-target="display">25:00</div>
+        </div>
+      <% end %>
 
       <div class="container-center">
         <div class="progress-message">
@@ -57,34 +62,20 @@
                     <% end %>
                 </form>
 
-
               </div>
             <% end %>
         </div>
 
-    <div class="container">
-      <%= image_tag(image_progress(@goal.progress)) %>
-    </div>
-
-  <% unless @goal.end_time.nil? %>
-    <div class="days-remaining">
-    <p><%= date_messages(@goal.remaining_days)%></p>
-    </div>
-  <% else %>
-  <% end %>
-
         <div class="container">
-          <%= image_tag(@goal.image_progress) %>
+          <%= image_tag(image_progress(@goal.progress)) %>
         </div>
 
-        <% unless @goal.end_time.nil? %>
-          <div class="days-remaining">
-            <p><%= (@goal.end_time - DateTime.now).to_i / (60 * 60 * 24)%> days</p>
-          </div>
-        <% else %>
-        <% end %>
-      </div>
-
+      <% unless @goal.end_time.nil? %>
+        <div class="days-remaining">
+        <p><%= date_messages(@goal.remaining_days)%></p>
+        </div>
+      <% else %>
+      <% end %>
 
     <div class="container-bottom">
       <%= render "shared/navbar_bottom" %>

@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_07_170443) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.string "emoji"
-    t.integer "progress", default: 0
+    t.integer "progress"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

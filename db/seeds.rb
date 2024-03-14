@@ -5,7 +5,7 @@ Goal.destroy_all
 puts "Destroying Users... 🧹"
 User.destroy_all
 
-puts "Creating Users 🤷🏼‍♀️💁🏻‍♂️🙆🏽‍♂️🤷🏼‍♂️"
+puts "Creating Users 🤷🏼‍♀️👱🏻‍♂️🙍🏻‍♂️💁🏻‍♂️"
 
 emma = User.create(name: "Emma", email: "emma@test.com", password: "123456")
 seb = User.create(name: "Sebastian", email: "sebastian@email.com", password: "123456")

@@ -38,19 +38,11 @@ export default class extends Controller {
   }
 
   checkTaskCompletion() {
-    let statement = null
-    this.inputTargets.forEach((input) => {
-      if (input.classList.contains("inputUndone")) {
-        statement = false
-        return
-      } else if (input.classList.contains("inputSuccess")){
-        statement = true
-      }
-    })
+    const allChecked = this.inputTargets.every((input) => input.classList.contains("inputSuccess"))
 
-    console.log(statement);
+    console.log(allChecked);
 
-    if (statement) {
+    if (allChecked) {
       this.startConfetti()
     }
   }

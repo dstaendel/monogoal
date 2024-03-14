@@ -1,35 +1,35 @@
-  <div class="container-main">
-<div class="archive-container">
-<h1><b>✅</b></h1>
-<h1><b><u>Archive</u></b></h1>
-<br>
-  <% @goals.each do |goal| %>
-    <div>
-    <h3><em>
-    <%= goal.title %>
-    </em>
-    </h3>
-    </div>
+<div class="container-main">
+  <!-- Add New Goals -->
+  <div class="new-goal-container">
+    <h2>➕ Add New Goal</h2>
+    <%= simple_form_for @goal do |f| %>
+      <%= f.input :title, label: false %>
+      <%= f.button :submit, class: "btn btn" %>
+    <% end %>
+  </div>
+
+  <!-- Non-Active Goals -->
+  <div class="archive-container mt-5">
+    <h2>✅ Archive</h2>
     <br>
-  <% end %>
-</div>
+    <% @goals.each do |goal| %>
+        <div>
+          <h3><em><%= goal.title %></em></h3>
+        </div>
+        <br>
+    <% end %>
+  </div>
 
-
+  <!-- Navbar Bottom -->
   <div class="container-bottom">
     <div class="navbar-bottom">
       <div class="pomodoro">
         <button class="pomodoro-button" id="book"><i class="fas fa-book"></i></button>
         <div class="dropup nav-circle">
-
-
           <%= link_to "", root_path, class: "button-back mx-5" %>
-
-
         </div>
         <button class="pomodoro-button" id="clock"><i class="fas fa-clock"></i></button>
       </div>
     </div>
   </div>
-</div>
-
 </div>

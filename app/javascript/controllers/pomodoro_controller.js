@@ -3,58 +3,40 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["display"]
   static values = {
-    time: Number
+    remainingSeconds: Number,
+    running: Boolean
   }
 
   connect() {
-    console.log("Hello from Pomodoro 🍅");
-    this.timeValue = (25 * 60)
-    // this.timeValue = this.timeValue;
-    this.#updateDisplay(this.timeValue);
-    this.loadTime();
-    if (window.location.pathname.includes('/')) {
-      this.startDashboard()
-      console.log("hello");
+    if (this.remainingSecondsValue === 0) {
+      this.remainingSecondsValue = 1500;
     }
+
+    if (this.runningValue) {
+      this.start();
+    }
+
+    this.#updateDisplay(this.remainingSecondsValue);
   }
 
   start(event) {
-    console.log("hello start");
-    event.preventDefault();
-    this.#countdown(this.timeValue);
-    this.loadTime();
-  }
-
-  startDashboard() {
-    this.#countdown(this.timeValue);
-    this.loadTime();
+    event?.preventDefault();
+    this.#countdown(this.remainingSecondsValue);
+    this.runningValue = true;
   }
 
   stop(event) {
     event.preventDefault()
-    console.log("Stopping timer ✋🏻");
-    clearInterval(this.currentInterval)
+    clearInterval(this.currentInterval);
+    this.runningValue = false;
   }
 
   reset(event) {
     event.preventDefault();
-    // TODO Make Coundown go back to default time
-    // link_to in HTML triggers a GET request and reloads the page
-    // So no code needed here
     clearInterval(this.currentInterval);
-    this.timeValue = (25 * 60)
-    localStorage.setItem('pomodoroTime', this.timeValue.toString())
-  }
-
-  saveTime() {
-    localStorage.setItem('pomodoroTime', this.timeValue.toString())
-  }
-
-  loadTime() {
-    this.savedTime = localStorage.getItem('pomodoroTime');
-    this.timeValue = this.savedTime ? parseInt(this.savedTime, 10) : (25 * 60)
+    this.remainingSecondsValue = (25 * 60);
     this.#updateDisplay(this.timeValue);
-    console.log("updatedisplay on dash");
+    this.runningValue = false;
   }
 
   #countdown(duration) {
@@ -62,24 +44,29 @@ export default class extends Controller {
 
       this.currentInterval = setInterval(() => {
       remainingTime -= 1;
-      this.saveTime();
-      this.timeValue = remainingTime;
+      this.remainingSecondsValue = remainingTime;
 
-      this.#updateDisplay(remainingTime);
+      this.#updateDisplay();
       if (remainingTime <= 0) {
         clearInterval(this.currentInterval);
       }
-    }, 1000)
+    }, 1000);
   }
 
-  #updateDisplay(remainingTime) {
-    this.displayTarget.innerHTML = `<p>${this.#formatTime(remainingTime)}</p>`;
-    console.log("Timer is now running 🐌");
+  #updateDisplay() {
+    this.displayTarget.innerHTML = `<p>${this.#formatTime()}</p>`;
   }
 
-  #formatTime(seconds) {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
+  #formatTime() {
+    const minutes = Math.floor(this.remainingSecondsValue / 60);
+    const remainingSeconds = this.remainingSecondsValue % 60;
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+  }
+
+  takeFive(event) {
+    event.preventDefault()
+    const searchQuery = `seconds=${this.remainingSecondsValue}&running=${this.runningValue}`
+    const url = `${event.currentTarget.href}?${searchQuery}`
+    window.location.href = url;
   }
 }
