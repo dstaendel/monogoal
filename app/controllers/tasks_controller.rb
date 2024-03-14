@@ -25,7 +25,9 @@ class TasksController < ApplicationController
     mark_as_done
     @task.save
     update_goal_progress
-    redirect_to goal_tasks_path(@task.goal.id)
+    render json: {
+      partial: render_to_string(partial: "goals/progress_image", locals: {goal: @task.goal})
+    }, status: :ok
   end
 
   def destroy
