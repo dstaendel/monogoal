@@ -33,7 +33,7 @@
         <div class="progress-message">
           <% if @quote %>
             <div class="quote">
-              <p><%= @quote["q"] %></p>
+              <p>» <%= @quote["q"] %> «</p>
               <p><strong>- <%= @quote["a"] %></strong></p>
             </div>
           <% else %>
@@ -43,7 +43,7 @@
 
         <div class="scroll-container">
             <% @tasks.each do |task| %>
-              <div data-toggle-target="task" data-pagination-target="taskItem" data-task-id="<%= task.id %>" class="task-item">
+              <div data-toggle-target="task" data-pagination-target="taskItem" data-task-id="<%= task.id %>" class="task-item-dashboard">
                 <%= task.title %>
                 <form
                 action="/goals/<%= @goal.id %>/tasks/<%= task.id %>"
@@ -52,9 +52,9 @@
                   <input type="hidden" name="_method" value="patch">
                   <input type="hidden" name="task[done]" value="check">
                     <% if task.done %>
-                      <input data-toggle-target="input" checked data-action="input->toggle#submitForm" type="checkbox" class="btn btn-success btn-square-green inputSuccess">
+                      <input data-toggle-target="input" checked data-action="input->toggle#submitForm" type="checkbox" >
                     <% else %>
-                      <input data-toggle-target="input" data-action="input->toggle#submitForm" type="checkbox" class="btn btn-secondary btn-square-grey inputUndone">
+                      <input data-toggle-target="input" data-action="input->toggle#submitForm" type="checkbox">
                     <% end %>
                 </form>
 
@@ -67,19 +67,23 @@
         </div>
 
       <% unless @goal.end_time.nil? %>
-        <div class="days-remaining">
-        <p><%= date_messages(@goal.remaining_days)%></p>
+        <div class="days-remaining" style="margin-bottom: 100px">
+        <p> <%= date_messages(@goal.remaining_days)%> </p>
         </div>
       <% else %>
       <% end %>
 
 </div>
-<div class="container-bottom">
-    </div>
+</div>
+
 
      <%= render "shared/navbar_bottom" %>
+
+
     <% else %>
+
       <%= link_to new_goal_path, data: { action: "click->pomodoro#takeFive"} do %>
+
         <div>
           <h1>Create your first goal!</h1>
         </div>
