@@ -46,7 +46,7 @@ class TasksController < ApplicationController
   end
 
   def set_task
-    @task = Task.find_by(params[:id])
+    @task = Task.find(params[:id])
   end
 
   def calculate_task_percentage
@@ -64,8 +64,6 @@ class TasksController < ApplicationController
   end
 
   def mark_as_done
-    @task.update(task_params) unless params[:task][:done] == "check"
-
     if params[:task][:done] == "check"
       if @task.done == true
         @task.done = false
