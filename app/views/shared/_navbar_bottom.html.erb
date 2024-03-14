@@ -8,7 +8,11 @@
     </div>
     <%= link_to pomodoro_path, class: "pomodoro-button", id: "clock",
     data: { action: "click->pomodoro#takeFive"} do %>
-      <i class="fas fa-clock"></i>
+      <% if params[:running] %>
+        <div class="dashboard-timer" data-pomodoro-target="display"></div>
+      <% else %>
+        <i class="fas fa-clock"></i>
+      <% end %>
     <% end %>
   </div>
 </div>

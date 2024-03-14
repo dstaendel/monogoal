@@ -4,10 +4,16 @@
         <i class="fas fa-book"></i>
     <% end %>
       <div class="dropup nav-circle">
-        <%= link_to "", root_path, class: "button-back mx-5", data: { action: "click->pomodoro#takeFive"} %>
+        <%= link_to root_path, class: "button-back mx-5", data: { action: "click->pomodoro#takeFive"} do %>
+          <span><i class="fa-solid fa-arrow-left" style="font-size: 60px !important; color: white;"></i></span>
+        <% end %>
       </div>
     <%= link_to pomodoro_path, class: "pomodoro-button", id: "clock", data: { action: "click->pomodoro#takeFive"} do %>
-      <i class="fas fa-clock"></i>
+        <% if params[:running] %>
+        <div class="dashboard-timer" data-pomodoro-target="display"></div>
+      <% else %>
+        <i class="fas fa-clock"></i>
+      <% end %>
     <% end %>
     </div>
   </div>
