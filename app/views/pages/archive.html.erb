@@ -1,4 +1,5 @@
-<div class="container-main">
+<div class="container-main" style="height: 100vh">
+
   <!-- Add New Goals -->
   <div class="new-goal-container">
     <h2>➕ Add New Goal</h2>
@@ -10,18 +11,18 @@
 
   <!-- Non-Active Goals -->
   <div class="archive-container mt-5">
-    <h2>✅ Archive</h2>
+    <h1>Your past goals (archive):</h1>
     <br>
-    <% @goals.each do |goal| %>
-        <div>
-          <h3><em><%= goal.title %></em></h3>
-        </div>
-        <br>
-    <% end %>
+    <div>
+      <% @goals.each do |goal| %>
+        <li class="task-item">
+          <h4><%= goal.title %></h4>
+        </li>
+      <% end %>
+    </div>
   </div>
 
   <!-- Navbar Bottom -->
-
     <div class="container-bottom">
       <%= render "shared/navbar_bottom_back" %>
     </div>

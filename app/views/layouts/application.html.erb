@@ -29,9 +29,11 @@
   </head>
 
   <body>
-    <%= render 'layouts/navbar' %>
-    <%= render "shared/flashes" %>
-      <%= yield %>
+    <div data-controller="pomodoro" data-pomodoro-remaining-seconds-value="<%= params[:seconds] %>" data-pomodoro-running-value="<%= params[:running] %>">
+      <%= render 'layouts/navbar' %>
+      <%= render "shared/flashes" %>
+        <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
-  <%= render 'layouts/footer' %>
 </html>

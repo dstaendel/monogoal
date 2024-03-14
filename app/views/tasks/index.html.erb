@@ -8,22 +8,24 @@
     <%= render "form", task: @task %>
   </div>
 
-
+ <div class="container-center">
 
   <div class="tasks-container">
     <ul>
       <% @tasks.each do |task| %>
         <li class="task-item">
-          <div class="task-title"><%= link_to task.title, edit_goal_task_path(@goal, task) %></div>
+          <div class="task-title"><%= link_to task.title, edit_goal_task_path(@goal, task), data: { action: "click->pomodoro#takeFive"} %></div>
           <%# <%= task.done %>
-            <form action="/goals/<%= @goal.id %>/tasks/<%= task.id %>" method="post" class="update-task-form" data-action="submit->toggle#submitForm">
+            <form action="/goals/<%= @goal.id %>/tasks/<%= task.id %>" method="post" class="update-task-form">
               <input type="hidden" name="_method" value="patch">
               <input type="hidden" name="task[done]" value="check">
+
+
                 <% if task.done %>
-              <input type="submit" class="btn btn-success btn-square-green">
+                  <input data-toggle-target="input" checked data-action="input->toggle#submitForm" type="checkbox" class="btn btn-success btn-square-green inputSuccess">
                 <% else %>
-              <input type="submit" class="btn btn-secondary btn-square-grey">
-                  <% end %>
+                  <input data-toggle-target="input" data-action="input->toggle#submitForm" type="checkbox" class="btn btn-secondary btn-square-grey inputUndone">
+                <% end %>
             </form>
           <div class="task-info">
           </div>

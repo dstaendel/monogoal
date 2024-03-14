@@ -1,11 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["form", "confetti", "task", "input"]
+  static targets = ["form", "confetti", "task", "input", "image"]
+  static values = { progress: Number }
+
 
   submitForm(event) {
     event.preventDefault()
-
     if (event.currentTarget.classList.contains("inputSuccess")) {
       event.currentTarget.classList.remove("inputSuccess")
       event.currentTarget.classList.add("inputUndone")
@@ -16,12 +17,7 @@ export default class extends Controller {
 
     const form = event.currentTarget.parentElement
     const action = form.action
-
-    // event.currentTarget.value =
-
-
     this.checkTaskCompletion();
-
     fetch(action, {
       method: 'POST',
       headers: {
@@ -30,25 +26,19 @@ export default class extends Controller {
       },
       body: new URLSearchParams(new FormData(form)).toString()
     })
-    .then(response => {
-      if (response.ok) {
-        console.log('Task updated successfully');
-      }
+    .then(response => response.json())
+    .then(data => {
+      this.imageTarget.innerHTML = data.partial;
     })
   }
-
   checkTaskCompletion() {
     const allChecked = this.inputTargets.every((input) => input.classList.contains("inputSuccess"))
-
-    console.log(allChecked);
-
     if (allChecked) {
       this.startConfetti()
     }
   }
 
   startConfetti() {
-    console.log("🎉🎉🎉🎉🎉🎉");
     this.confettiTarget.classList.remove("d-none")
     setTimeout(() => {
       this.confettiTarget.classList.add("d-none")

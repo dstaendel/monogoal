@@ -1,8 +1,10 @@
 <% unless @goal.nil? %>
-  <div class="container-main" 
-  data-controller="toggle pomodoro" 
-  data-pomodoro-remaining-seconds-value="<%= params[:seconds] %>" 
-  data-pomodoro-running-value="<%= params[:running] %>">
+  <div class="container-main"
+  data-controller="toggle"
+  data-pomodoro-remaining-seconds-value="<%= params[:seconds] %>"
+  data-pomodoro-running-value="<%= params[:running] %>"
+  data-toggle-progress-value="<%= @goal.progress %>"
+  >
 
       <div class="confetti d-none" data-toggle-target="confetti">
         <div class="confetti-piece"></div>
@@ -27,18 +29,11 @@
         </div>
       </div>
 
-      <%# Pomodoro Timer %>
-      <% unless params[:seconds] == "1500" %>
-        <div class="something pomodoro-timer-sm">
-          <div data-pomodoro-target="display">25:00</div>
-        </div>
-      <% end %>
-
       <div class="container-center">
         <div class="progress-message">
           <% if @quote %>
             <div class="quote">
-              <p><%= @quote["q"] %></p>
+              <p>» <%= @quote["q"] %> «</p>
               <p><strong>- <%= @quote["a"] %></strong></p>
             </div>
           <% else %>
@@ -48,17 +43,18 @@
 
         <div class="scroll-container">
             <% @tasks.each do |task| %>
-              <div data-toggle-target="task" data-pagination-target="taskItem" data-task-id="<%= task.id %>">
+              <div data-toggle-target="task" data-pagination-target="taskItem" data-task-id="<%= task.id %>" class="task-item-dashboard">
                 <%= task.title %>
                 <form
                 action="/goals/<%= @goal.id %>/tasks/<%= task.id %>"
-                method="post" class="update-task-form">
+                method="post" class="update-task-form"
+                data-action="submit->toggle#submitForm">
                   <input type="hidden" name="_method" value="patch">
                   <input type="hidden" name="task[done]" value="check">
                     <% if task.done %>
-                      <input data-toggle-target="input" checked data-action="input->toggle#submitForm" type="checkbox" class="btn btn-success btn-square-green inputSuccess">
+                      <input data-toggle-target="input" checked data-action="input->toggle#submitForm" type="checkbox" >
                     <% else %>
-                      <input data-toggle-target="input" data-action="input->toggle#submitForm" type="checkbox" class="btn btn-secondary btn-square-grey inputUndone">
+                      <input data-toggle-target="input" data-action="input->toggle#submitForm" type="checkbox">
                     <% end %>
                 </form>
 
@@ -66,24 +62,28 @@
             <% end %>
         </div>
 
-        <div class="container">
-          <%= image_tag(image_progress(@goal.progress)) %>
+        <div data-toggle-target="image">
+          <%= render "goals/progress_image", goal: @goal %>
         </div>
 
       <% unless @goal.end_time.nil? %>
-        <div class="days-remaining">
-        <p><%= date_messages(@goal.remaining_days)%></p>
+        <div class="days-remaining" style="margin-bottom: 100px">
+        <p> <%= date_messages(@goal.remaining_days)%> </p>
         </div>
       <% else %>
       <% end %>
 
-    <div class="container-bottom">
-      <%= render "shared/navbar_bottom" %>
-    </div>
+</div>
 </div>
 
+
+     <%= render "shared/navbar_bottom" %>
+
+
     <% else %>
-      <%= link_to new_goal_path do %>
+
+      <%= link_to new_goal_path, data: { action: "click->pomodoro#takeFive"} do %>
+
         <div>
           <h1>Create your first goal!</h1>
         </div>

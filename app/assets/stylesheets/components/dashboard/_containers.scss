@@ -12,8 +12,8 @@
   bottom: 0; /* Extend to the bottom of the parent */
   left: 0; /* Align to the left */
   right: 0; /* Align to the right */
-  height: 100vh; /* Example height, simulating a full page */
   width: 100%;
+  // height: 100vh;
 }
 
 .container-top {
@@ -47,7 +47,7 @@
   // // border: 1px solid #ccc;
   // border-radius: 60px;
   // background-color: rgba(227, 227, 227, 0.4);
-  margin-bottom: 90px;
+  min-height: 100px;
   // position: fixed;
   // bottom: 0%;
   // display: flex;
@@ -131,5 +131,18 @@
   margin-inline: 10px;
   padding-top: 15px;
   padding-bottom: 5px;
+
+}
+
+.quote {
+  box-sizing: border-box;
+  color: black;
+  display: block;
+  font-family: Outfit, 'Times New Roman', Times, serif;
+  font-optical-sizing: auto;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+  text-align: center;
 
 }
