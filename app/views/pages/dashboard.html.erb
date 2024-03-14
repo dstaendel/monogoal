@@ -1,8 +1,10 @@
 <% unless @goal.nil? %>
-  <div class="container-main" 
-  data-controller="toggle pomodoro" 
-  data-pomodoro-remaining-seconds-value="<%= params[:seconds] %>" 
-  data-pomodoro-running-value="<%= params[:running] %>">
+  <div class="container-main"
+  data-controller="toggle pomodoro"
+  data-pomodoro-remaining-seconds-value="<%= params[:seconds] %>"
+  data-pomodoro-running-value="<%= params[:running] %>"
+  data-toggle-progress-value="<%= @goal.progress %>"
+  >
 
       <div class="confetti d-none" data-toggle-target="confetti">
         <div class="confetti-piece"></div>
@@ -48,11 +50,12 @@
 
         <div class="scroll-container">
             <% @tasks.each do |task| %>
-              <div data-toggle-target="task" data-pagination-target="taskItem" data-task-id="<%= task.id %>">
+              <div data-toggle-target="task" data-pagination-target="taskItem" data-task-id="<%= task.id %>" class="task-item">
                 <%= task.title %>
                 <form
                 action="/goals/<%= @goal.id %>/tasks/<%= task.id %>"
-                method="post" class="update-task-form">
+                method="post" class="update-task-form"
+                data-action="submit->toggle#submitForm">
                   <input type="hidden" name="_method" value="patch">
                   <input type="hidden" name="task[done]" value="check">
                     <% if task.done %>
@@ -66,8 +69,8 @@
             <% end %>
         </div>
 
-        <div class="container">
-          <%= image_tag(image_progress(@goal.progress)) %>
+        <div data-toggle-target="image">
+          <%= render "goals/progress_image", goal: @goal %>
         </div>
 
       <% unless @goal.end_time.nil? %>
@@ -77,11 +80,11 @@
       <% else %>
       <% end %>
 
-    <div class="container-bottom">
-      <%= render "shared/navbar_bottom" %>
-    </div>
 </div>
+<div class="container-bottom">
+    </div>
 
+     <%= render "shared/navbar_bottom" %>
     <% else %>
       <%= link_to new_goal_path do %>
         <div>
