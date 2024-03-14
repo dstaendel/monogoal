@@ -1,26 +1,26 @@
 
 <div class="container-home">
-  <h1>Welcome to:</h1>
+  <h2>Welcome to:</h2>
   <h1 id="rainbow-text"><b>Mono-Goal</b></h1>
-  <br>
+    <div>
+      <%= image_tag("tree_home.svg", width: "auto", height: "auto", alt: "test") %>
+    </div>
 
-  <div>
-    <%= image_tag("tree_home.svg", width: "auto", height: "auto", alt: "test") %>
-  </div>
-  <br>
-  <p>Mono-Goal let's you focus on the most important without distractions.</p>
-  <br>
-  <p><em>One goal at a time ...</em></p>
-  <br>
+    <div>
+      <p>Mono-Goal let's you focus on the most important without distractions.</p>
+      <p><em>One goal at a time ...</em></p>
+    </div>
+
   <h4><u>How to:</u></h4>
   <div class="how-to-list">
-    <p id="home-list">1.<span> Sign Up and Log in</span></p>
-    <p id="home-list">2.<span> Set your goal</span></p>
-    <p id="home-list">3.<span> Set your timeline</span></p>
-    <p id="home-list">4.<span> Set your tasks</span></p>
+    <p>1.<span> Sign Up and Log in</span></p>
+    <p>2.<span> Set your goal</span></p>
+    <p>3.<span> Set your timeline</span></p>
+    <p>4.<span> Set your tasks</span></p>
   </div>
 </div>
-  <div class="home-button-container">
-    <button id="home-button-1"><em><%= link_to "Start Your Journey Now", new_user_session_path, class: "text-decoration-none" %></em></button>
-    <button id="home-button-2"><em><%= link_to "Pomodoro Timer", pomodoro_path, class: "text-decoration-none" %></em></button>
-  </div>
+
+<div class="home-button-container">
+  <%= button_to "Start Your Journey Now", new_user_session_path, class: "text-decoration-none", id: "home-button-1" %>
+  <%= button_to "Pomodoro Timer", pomodoro_path, class: "text-decoration-none", id: "home-button-2" %>
+</div>
