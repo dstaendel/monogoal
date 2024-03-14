@@ -1,23 +1,22 @@
-<div class="container-main">
+<div class="container-main" style="height: 100vh">
   <!-- Add New Goals -->
-  <div class="new-goal-container">
-    <h2>➕ Add New Goal</h2>
-    <%= simple_form_for @goal do |f| %>
-      <%= f.input :title, label: false %>
-      <%= f.button :submit, class: "btn btn" %>
-    <% end %>
-  </div>
+  <h1>Create a new journey:</h1>
+    <div>
+      <%= render "new_goal_form", task: @goal %>
+    </div>
+
 
   <!-- Non-Active Goals -->
   <div class="archive-container mt-5">
-    <h2>✅ Archive</h2>
+    <h1>Your past goals (archive):</h1>
     <br>
-    <% @goals.each do |goal| %>
-        <div>
-          <h3><em><%= goal.title %></em></h3>
-        </div>
-        <br>
-    <% end %>
+    <div>
+      <% @goals.each do |goal| %>
+        <li class="task-item">
+          <h4><%= goal.title %></h4>
+        </li>
+      <% end %>
+    </div>
   </div>
 
   <!-- Navbar Bottom -->
@@ -26,7 +25,7 @@
       <div class="pomodoro">
         <button class="pomodoro-button" id="book"><i class="fas fa-book"></i></button>
         <div class="dropup nav-circle">
-          <%= link_to "", root_path, class: "button-back mx-5" %>
+          <%= link_to "", root_path, data: { action: "click->pomodoro#takeFive"}, class: "button-back mx-5" %>
         </div>
         <button class="pomodoro-button" id="clock"><i class="fas fa-clock"></i></button>
       </div>

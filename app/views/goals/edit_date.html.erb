@@ -19,11 +19,18 @@
     <div class="pomodoro">
       <button class="pomodoro-button" id="book"><i class="fas fa-book"></i></button>
       <div class="dropup nav-circle">
-
         <a href="/" class="button-back mx-5" role="button"></a>
-
       </div>
-      <button class="pomodoro-button" id="clock"><i class="fas fa-clock"></i></button>
+
+      <%= link_to pomodoro_path, class: "pomodoro-button", id: "clock",
+      data: { action: "click->pomodoro#takeFive"} do %>
+        <% if params[:running] %>
+          <div class="dashboard-timer" data-pomodoro-target="display"></div>
+        <% else %>
+          <i class="fas fa-clock"></i>
+        <% end %>
+      <% end %>
+
     </div>
   </div>
 </div>
