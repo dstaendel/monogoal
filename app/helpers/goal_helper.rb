@@ -13,9 +13,9 @@ module GoalHelper
       "PLANT-4.png"
       # Should have the celebration animation. Needs to be activated by user:
     when 100
-      "PLANT-4.png"
-    else
       "tree_home.svg"
+    else
+      "SEED.png"
     end
   end
 
