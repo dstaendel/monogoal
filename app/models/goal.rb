@@ -7,7 +7,7 @@ class Goal < ApplicationRecord
   def calculate_progress
     completed_tasks = tasks.where(done: true).count
     total_tasks = tasks.count
-    progress = (completed_tasks.to_f / total_tasks) * 100
+    (completed_tasks.to_f / total_tasks) * 100
   end
 
   def remaining_days

@@ -39,7 +39,7 @@ class GoalsController < ApplicationController
     @goal.start_time = dates.first
     @goal.end_time = dates.last
     @goal.update!(goal_params)
-    redirect_to root_path
+    redirect_to root_path(seconds: params[:goal][:seconds], running: params[:goal][:running])
   end
 
   private
