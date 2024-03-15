@@ -29,13 +29,24 @@
   padding: 10px 27px;
   position: relative;
   margin: 11px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 2rem;
+
+  width: 100px; /* Example width */
+  height: 50px; /* Example height */
+  padding: 10px; /* Example padding */
+  display: inline-flex; /* Ensures proper alignment of icons/text */
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  font-size: 16px; /* Example font size */
+  /* Add other styling as needed */
 }
+
+
 
 .pomodoro-button:hover {
   transform: scale(1.1);

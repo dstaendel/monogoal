@@ -9,8 +9,9 @@
       <button class="button-add-functionality mx-5"></button>
     </div>
 
-    <%= link_to pomodoro_path, class: "pomodoro-button", id: "clock", data: { action: "click->pomodoro#takeFive"} do %>
-      <% if params[:running] && params[:action] != :pomodoro %>
+    <%= link_to pomodoro_path, data: { action: "click->pomodoro#takeFive"}, class: "pomodoro-button", id: "clock" do %>
+      <% if params[:running] %>
+
         <div class="dashboard-timer" data-pomodoro-target="display"></div>
       <% else %>
         <i class="fas fa-clock"></i>
