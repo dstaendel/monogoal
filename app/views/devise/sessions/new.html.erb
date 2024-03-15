@@ -16,10 +16,11 @@
                   required: false,
                   input_html: { autocomplete: "current-password" } %>
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        <button class="form-actions" style="color: white">
+          <%= f.button :submit, "Confirm" %>
+        </button>
     </div>
-     <button class="form-actions" style="color: white">
-      <%= f.button :submit, "Confirm" %>
-    </button>
+
     <p> <%= render "devise/shared/links" %>
       </div>
   <% end %>
