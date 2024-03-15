@@ -15,7 +15,6 @@
         <% @tasks.each do |task| %>
           <li class="task-item">
             <div class="task-title"><%= link_to task.title, edit_goal_task_path(@goal, task), data: { action: "click->pomodoro#takeFive"} %></div>
-            <%# <%= task.done %>
               <form action="/goals/<%= @goal.id %>/tasks/<%= task.id %>" method="post" class="update-task-form">
                 <input type="hidden" name="_method" value="patch">
                 <input type="hidden" name="task[done]" value="check">

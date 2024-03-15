@@ -1,13 +1,15 @@
 <nav class="mynavbar navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <%= link_to root_path, data: { action: "click->pomodoro#takeFive"}, class: "text-decoration-none" do %>
-      <p class="navbar-brand"><%= time_based_greeting %> <%= current_user ? current_user.name : "Visitor" %>! <%= time_based_emoji %></p>
+  <div class="container-fluid <%= "justify-content-end" if params[:controller] == "pages" && params[:action] == "home"  %>">
+    <% unless params[:controller] == "pages" && params[:action] == "home" %>
+      <%= link_to root_path, data: { action: "click->pomodoro#takeFive"}, class: "text-decoration-none" do %>
+        <p class="navbar-brand"><%= time_based_greeting %> <%= current_user ? current_user.name : "Visitor" %>! <%= time_based_emoji %></p>
+      <% end %>
     <% end %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <%# <span class="navbar-toggler-icon" style="color: rgb(0, 60, 144) !important;"></span> %>
         <span><i class="fa-solid fa-caret-down" style="color: rgb(0, 60, 144) !important;"></i></span>
       </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ms-auto">
 
           <li class="nav-item">

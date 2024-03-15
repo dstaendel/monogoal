@@ -10,6 +10,8 @@
   <div class="edit-date-container">
     <%= simple_form_for(@goal, html: { class: "" }, data: { controller: "datepicker" }) do |f| %>
       <%= f.input :start_time, label: "Set Your Dates, Track Your Journey!", class:"date-update-input", as: :string, input_html: { data: { datepicker_target: "date" } } %>
+      <%= f.input :seconds, as: :hidden, input_html: { value: params[:seconds]} %>
+      <%= f.input :running, as: :hidden, input_html: { value: params[:running]} %>
         <div class="update-button-container">
           <%= f.button :submit, "UPDATE", class:"date-update-btn" %>
         </div>
